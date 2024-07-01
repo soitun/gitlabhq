@@ -1,13 +1,13 @@
 ---
-stage: none
-group: unassigned
+stage: Plan
+group: Knowledge
 info: Any user with at least the Maintainer role can merge updates to this content. For details, see https://docs.gitlab.com/ee/development/development_processes.html#development-guidelines-review.
 description: 'An introduction to reference parsers and reference filters, and a guide to their implementation.'
 ---
 
 # Reference processing
 
-[GitLab Flavored Markdown](../user/markdown.md) includes the ability to process
+[GitLab Flavored Markdown](../../user/markdown.md) includes the ability to process
 references to a range of GitLab domain objects. This is implemented by two
 abstractions in the `Banzai` pipeline: `ReferenceFilter` and `ReferenceParser`.
 This page explains what these are, how they are used, and how you would
@@ -37,18 +37,18 @@ the tools that identify short-code and URI references from markup documents and
 transform them into structured links to the resources they represent.
 
 For example, the class
-[`Banzai::Filter::IssueReferenceFilter`](https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/banzai/filter/issue_reference_filter.rb)
+[`Banzai::Filter::References::IssueReferenceFilter`](https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/banzai/filter/references/issue_reference_filter.rb)
 is responsible for handling references to issues, such as
 `gitlab-org/gitlab#123` and `https://gitlab.com/gitlab-org/gitlab/-/issues/200048`.
 
 All reference filters are instances of [`HTML::Pipeline::Filter`](https://www.rubydoc.info/gems/html-pipeline),
-and inherit (often indirectly) from [`Banzai::Filter::ReferenceFilter`](https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/banzai/filter/reference_filter.rb).
+and inherit (often indirectly) from [`Banzai::Filter::References::ReferenceFilter`](https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/banzai/filter/references/reference_filter.rb).
 
 `HTML::Pipeline::Filter` has a simple interface consisting of `#call`, a void
 method that mutates the current document. `ReferenceFilter` provides methods
 that make defining suitable `#call` methods easier. Most reference filters
 however do not inherit from either of these classes directly, but from
-[`AbstractReferenceFilter`](https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/banzai/filter/abstract_reference_filter.rb),
+[`AbstractReferenceFilter`](https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/banzai/filter/references/abstract_reference_filter.rb),
 which provides a higher-level interface.
 
 Subclasses of `AbstractReferenceFilter` generally do not override `#call`; instead,
@@ -152,7 +152,7 @@ a resource that some subsequent readers should not be able to see.
 
 For example, you might create an issue, and refer to a confidential issue `#1234`,
 which you have access to. This is rendered in the cached HTML as a link to
-that [confidential issue](../user/project/issues/confidential_issues.md),
+that [confidential issue](../../user/project/issues/confidential_issues.md),
 with data attributes containing its ID, the ID of the
 project and other confidential data. A later reader, who has access to your issue
 might not have permission to read issue `#1234`, and so we need to redact

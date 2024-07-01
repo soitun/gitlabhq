@@ -7447,6 +7447,30 @@ Input type: `PipelineTriggerUpdateInput`
 | <a id="mutationpipelinetriggerupdateerrors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during execution of the mutation. |
 | <a id="mutationpipelinetriggerupdatepipelinetrigger"></a>`pipelineTrigger` | [`PipelineTrigger`](#pipelinetrigger) | Mutated pipeline trigger token. |
 
+### `Mutation.processUserBillablePromotionRequest`
+
+DETAILS:
+**Introduced** in GitLab 17.2.
+**Status**: Experiment.
+
+Input type: `ProcessUserBillablePromotionRequestInput`
+
+#### Arguments
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutationprocessuserbillablepromotionrequestclientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutationprocessuserbillablepromotionrequeststatus"></a>`status` | [`MemberApprovalStatusType!`](#memberapprovalstatustype) | Status for the member approval request (approved, denied, pending). |
+| <a id="mutationprocessuserbillablepromotionrequestuserid"></a>`userId` | [`UserID!`](#userid) | Global ID of user to be promoted. |
+
+#### Fields
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutationprocessuserbillablepromotionrequestclientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutationprocessuserbillablepromotionrequesterrors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during execution of the mutation. |
+| <a id="mutationprocessuserbillablepromotionrequestresult"></a>`result` | [`UserPromotionStatusType`](#userpromotionstatustype) | Status of the user promotion process (success, partial_success, failed). |
+
 ### `Mutation.productAnalyticsProjectSettingsUpdate`
 
 Input type: `ProductAnalyticsProjectSettingsUpdateInput`
@@ -18193,7 +18217,7 @@ CI/CD variables for a project.
 | <a id="cirunnerephemeralregisterurl"></a>`ephemeralRegisterUrl` **{warning-solid}** | [`String`](#string) | **Introduced** in GitLab 15.11. **Status**: Experiment. URL of the registration page of the runner manager. Only available for the creator of the runner for a limited time during registration. |
 | <a id="cirunnergroups"></a>`groups` | [`GroupConnection`](#groupconnection) | Groups the runner is associated with. For group runners only. (see [Connections](#connections)) |
 | <a id="cirunnerid"></a>`id` | [`CiRunnerID!`](#cirunnerid) | ID of the runner. |
-| <a id="cirunnerjobexecutionstatus"></a>`jobExecutionStatus` | [`CiRunnerJobExecutionStatus`](#cirunnerjobexecutionstatus) | Job execution status of the runner. |
+| <a id="cirunnerjobexecutionstatus"></a>`jobExecutionStatus` **{warning-solid}** | [`CiRunnerJobExecutionStatus`](#cirunnerjobexecutionstatus) | **Introduced** in GitLab 15.7. **Status**: Experiment. Job execution status of the runner. |
 | <a id="cirunnerlocked"></a>`locked` | [`Boolean`](#boolean) | Indicates the runner is locked. |
 | <a id="cirunnermaintenancenote"></a>`maintenanceNote` | [`String`](#string) | Runner's maintenance notes. |
 | <a id="cirunnermaintenancenotehtml"></a>`maintenanceNoteHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of `maintenance_note`. |
@@ -18333,7 +18357,7 @@ Returns [`[CiRunnerCloudProvisioningStep!]`](#cirunnercloudprovisioningstep).
 | <a id="cirunnermanagerexecutorname"></a>`executorName` | [`String`](#string) | Executor last advertised by the runner. |
 | <a id="cirunnermanagerid"></a>`id` | [`CiRunnerManagerID!`](#cirunnermanagerid) | ID of the runner manager. |
 | <a id="cirunnermanageripaddress"></a>`ipAddress` | [`String`](#string) | IP address of the runner manager. |
-| <a id="cirunnermanagerjobexecutionstatus"></a>`jobExecutionStatus` | [`CiRunnerJobExecutionStatus`](#cirunnerjobexecutionstatus) | Job execution status of the runner manager. |
+| <a id="cirunnermanagerjobexecutionstatus"></a>`jobExecutionStatus` **{warning-solid}** | [`CiRunnerJobExecutionStatus`](#cirunnerjobexecutionstatus) | **Introduced** in GitLab 16.3. **Status**: Experiment. Job execution status of the runner manager. |
 | <a id="cirunnermanagerplatformname"></a>`platformName` | [`String`](#string) | Platform provided by the runner manager. |
 | <a id="cirunnermanagerrevision"></a>`revision` | [`String`](#string) | Revision of the runner. |
 | <a id="cirunnermanagerrunner"></a>`runner` | [`CiRunner`](#cirunner) | Runner configuration for the runner manager. |
@@ -28785,7 +28809,7 @@ four standard [pagination arguments](#pagination-arguments):
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="projectmergetrainsstatus"></a>`status` | [`MergeTrainStatus`](#mergetrainstatus) | Filter merge trains by a specific status. Defaults to ACTIVE. |
+| <a id="projectmergetrainsstatus"></a>`status` | [`MergeTrainStatus`](#mergetrainstatus) | Filter merge trains by a specific status. |
 | <a id="projectmergetrainstargetbranches"></a>`targetBranches` | [`[String!]`](#string) | Filter merge trains by a list of target branches. |
 
 ##### `Project.milestones`
@@ -33685,8 +33709,8 @@ Runner cloud provider.
 
 | Value | Description |
 | ----- | ----------- |
-| <a id="cirunnerjobexecutionstatusidle"></a>`IDLE` | Runner is idle. |
-| <a id="cirunnerjobexecutionstatusrunning"></a>`RUNNING` | Runner is executing jobs. |
+| <a id="cirunnerjobexecutionstatusidle"></a>`IDLE` **{warning-solid}** | **Introduced** in GitLab 15.7. **Status**: Experiment. Runner is idle. |
+| <a id="cirunnerjobexecutionstatusrunning"></a>`RUNNING` **{warning-solid}** | **Introduced** in GitLab 15.7. **Status**: Experiment. Runner is executing jobs. |
 
 ### `CiRunnerMembershipFilter`
 
@@ -34880,6 +34904,16 @@ Name of access levels of a group or project member.
 | <a id="memberaccesslevelnameowner"></a>`OWNER` | Owner access. |
 | <a id="memberaccesslevelnamereporter"></a>`REPORTER` | Reporter access. |
 
+### `MemberApprovalStatusType`
+
+Types of member approval status.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="memberapprovalstatustypeapproved"></a>`APPROVED` | Approved promotion request. |
+| <a id="memberapprovalstatustypedenied"></a>`DENIED` | Denied promotion request. |
+| <a id="memberapprovalstatustypepending"></a>`PENDING` | Pending promotion request. |
+
 ### `MemberRolePermission`
 
 Member role permission.
@@ -36021,6 +36055,16 @@ Name of the feature that the callout is for.
 | <a id="usercalloutfeaturenameenumvulnerability_report_grouping"></a>`VULNERABILITY_REPORT_GROUPING` | Callout feature name for vulnerability_report_grouping. |
 | <a id="usercalloutfeaturenameenumweb_ide_alert_dismissed"></a>`WEB_IDE_ALERT_DISMISSED` | Callout feature name for web_ide_alert_dismissed. |
 | <a id="usercalloutfeaturenameenumweb_ide_ci_environments_guidance"></a>`WEB_IDE_CI_ENVIRONMENTS_GUIDANCE` | Callout feature name for web_ide_ci_environments_guidance. |
+
+### `UserPromotionStatusType`
+
+Types of User Promotion States.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="userpromotionstatustypefailed"></a>`FAILED` | Failed to apply promotion requests for user. |
+| <a id="userpromotionstatustypepartial_success"></a>`PARTIAL_SUCCESS` | User promotion was successful, but all promotion requests were not successfully applied. |
+| <a id="userpromotionstatustypesuccess"></a>`SUCCESS` | Successfully applied all promotion requests for user. |
 
 ### `UserState`
 
