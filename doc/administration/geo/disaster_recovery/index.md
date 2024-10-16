@@ -19,8 +19,8 @@ causes downtime.
 
 ## Promoting a **secondary** Geo site in single-secondary configurations
 
-We don't currently provide an automated way to promote a Geo replica and do a
-failover, but you can do it manually if you have `root` access to the machine.
+While you can't automatically promote a Geo replica and do a failover,
+you can promote it manually if you have `root` access to the machine.
 
 This process promotes a **secondary** Geo site to a **primary** site. To regain
 geographic redundancy as quickly as possible, you should add a new **secondary** site
@@ -80,7 +80,7 @@ must disable the **primary** site.
 
 Note the following when promoting a secondary:
 
-- If the secondary site [has been paused](../../geo/index.md#pausing-and-resuming-replication), the promotion
+- If the secondary site [has been paused](../replication/pause_resume_replication.md), the promotion
   performs a point-in-time recovery to the last known state.
   Data that was created on the primary while the secondary was paused is lost.
 - A new **secondary** should not be added at this time. If you want to add a new
@@ -272,7 +272,7 @@ changing Git remotes and API URLs.
    ```
 
    NOTE:
-   Changing `external_url` does not prevent access via the old secondary URL, as
+   Changing `external_url` does not prevent access through the old secondary URL, as
    long as the secondary DNS records are still intact.
 
 1. Update the **secondary**'s SSL certificate:
@@ -313,7 +313,7 @@ changing Git remotes and API URLs.
 Promoting a **secondary** site to **primary** site using the process above does not enable
 Geo on the new **primary** site.
 
-To bring a new **secondary** site online, follow the [Geo setup instructions](../index.md#setup-instructions).
+To bring a new **secondary** site online, follow the [Geo setup instructions](../setup/index.md).
 
 ### Step 6. Removing the former secondary's tracking database
 

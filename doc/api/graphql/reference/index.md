@@ -1436,7 +1436,7 @@ Input type: `AbuseReportLabelCreateInput`
 | ---- | ---- | ----------- |
 | <a id="mutationabusereportlabelcreateclientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutationabusereportlabelcreateerrors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during execution of the mutation. |
-| <a id="mutationabusereportlabelcreatelabel"></a>`label` | [`Label`](#label) | Label after mutation. |
+| <a id="mutationabusereportlabelcreatelabel"></a>`label` | [`AbuseReportLabel`](#abusereportlabel) | Label after mutation. |
 
 ### `Mutation.achievementsAward`
 
@@ -1745,10 +1745,10 @@ Input type: `AiFeatureSettingUpdateInput`
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="mutationaifeaturesettingupdateaiselfhostedmodelid"></a>`aiSelfHostedModelId` | [`AiSelfHostedModelID`](#aiselfhostedmodelid) | Global ID of the self-hosted model provide the AI setting. |
 | <a id="mutationaifeaturesettingupdateclientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutationaifeaturesettingupdatefeature"></a>`feature` | [`AiFeatures!`](#aifeatures) | AI feature being configured. |
 | <a id="mutationaifeaturesettingupdateprovider"></a>`provider` | [`AiFeatureProviders!`](#aifeatureproviders) | Provider for AI setting. |
-| <a id="mutationaifeaturesettingupdateselfhostedmodelid"></a>`selfHostedModelId` | [`AiSelfHostedModelID`](#aiselfhostedmodelid) | Global ID of the self-hosted model provide the AI setting. |
 
 #### Fields
 
@@ -2597,6 +2597,10 @@ Input type: `AwardEmojiToggleInput`
 | <a id="mutationawardemojitoggletoggledon"></a>`toggledOn` | [`Boolean!`](#boolean) | Indicates the status of the emoji. True if the toggle awarded the emoji, and false if the toggle removed the emoji. |
 
 ### `Mutation.boardEpicCreate`
+
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
 
 Input type: `BoardEpicCreateInput`
 
@@ -3591,6 +3595,10 @@ Input type: `CreateDiscussionInput`
 
 ### `Mutation.createEpic`
 
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
+
 Input type: `CreateEpicInput`
 
 #### Arguments
@@ -3656,7 +3664,7 @@ Input type: `CreateIssueInput`
 | <a id="mutationcreateissuedescription"></a>`description` | [`String`](#string) | Description of the issue. |
 | <a id="mutationcreateissuediscussiontoresolve"></a>`discussionToResolve` | [`String`](#string) | ID of a discussion to resolve. Also pass `merge_request_to_resolve_discussions_of`. |
 | <a id="mutationcreateissueduedate"></a>`dueDate` | [`ISO8601Date`](#iso8601date) | Due date of the issue. |
-| <a id="mutationcreateissueepicid"></a>`epicId` | [`EpicID`](#epicid) | ID of an epic to associate the issue with. |
+| <a id="mutationcreateissueepicid"></a>`epicId` **{warning-solid}** | [`EpicID`](#epicid) | **Deprecated:** This will be replaced by WorkItem hierarchyWidget. Deprecated in GitLab 17.5. |
 | <a id="mutationcreateissuehealthstatus"></a>`healthStatus` | [`HealthStatus`](#healthstatus) | Desired health status. |
 | <a id="mutationcreateissueiid"></a>`iid` | [`Int`](#int) | IID (internal ID) of a project issue. Only admins and project owners can modify. |
 | <a id="mutationcreateissueiterationcadenceid"></a>`iterationCadenceId` | [`IterationsCadenceID`](#iterationscadenceid) | Global iteration cadence ID. Required when `iterationWildcardId` is provided. |
@@ -4558,6 +4566,10 @@ Input type: `DestroyCustomEmojiInput`
 
 ### `Mutation.destroyEpicBoard`
 
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
+
 Input type: `DestroyEpicBoardInput`
 
 #### Arguments
@@ -4919,6 +4931,10 @@ Input type: `EnvironmentsCanaryIngressUpdateInput`
 
 ### `Mutation.epicAddIssue`
 
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
+
 Input type: `EpicAddIssueInput`
 
 #### Arguments
@@ -4941,6 +4957,10 @@ Input type: `EpicAddIssueInput`
 | <a id="mutationepicaddissueerrors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during execution of the mutation. |
 
 ### `Mutation.epicBoardCreate`
+
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
 
 Input type: `EpicBoardCreateInput`
 
@@ -4967,6 +4987,10 @@ Input type: `EpicBoardCreateInput`
 
 ### `Mutation.epicBoardListCreate`
 
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
+
 Input type: `EpicBoardListCreateInput`
 
 #### Arguments
@@ -4990,6 +5014,10 @@ Input type: `EpicBoardListCreateInput`
 
 Destroys an epic board list.
 
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
+
 Input type: `EpicBoardListDestroyInput`
 
 #### Arguments
@@ -5008,6 +5036,10 @@ Input type: `EpicBoardListDestroyInput`
 | <a id="mutationepicboardlistdestroylist"></a>`list` | [`EpicList`](#epiclist) | Epic board list. `null` if the board was destroyed successfully. |
 
 ### `Mutation.epicBoardUpdate`
+
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
 
 Input type: `EpicBoardUpdateInput`
 
@@ -5034,6 +5066,10 @@ Input type: `EpicBoardUpdateInput`
 
 ### `Mutation.epicMoveList`
 
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
+
 Input type: `EpicMoveListInput`
 
 #### Arguments
@@ -5059,6 +5095,10 @@ Input type: `EpicMoveListInput`
 
 ### `Mutation.epicSetSubscription`
 
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
+
 Input type: `EpicSetSubscriptionInput`
 
 #### Arguments
@@ -5079,6 +5119,10 @@ Input type: `EpicSetSubscriptionInput`
 | <a id="mutationepicsetsubscriptionerrors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during execution of the mutation. |
 
 ### `Mutation.epicTreeReorder`
+
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
 
 Input type: `EpicTreeReorderInput`
 
@@ -6123,7 +6167,7 @@ Input type: `IssueMoveListInput`
 | ---- | ---- | ----------- |
 | <a id="mutationissuemovelistboardid"></a>`boardId` | [`BoardID!`](#boardid) | Global ID of the board that the issue is in. |
 | <a id="mutationissuemovelistclientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
-| <a id="mutationissuemovelistepicid"></a>`epicId` | [`EpicID`](#epicid) | ID of the parent epic. NULL when removing the association. |
+| <a id="mutationissuemovelistepicid"></a>`epicId` **{warning-solid}** | [`EpicID`](#epicid) | **Deprecated:** This will be replaced by WorkItem hierarchyWidget. Deprecated in GitLab 17.5. |
 | <a id="mutationissuemovelistfromlistid"></a>`fromListId` | [`ID`](#id) | ID of the board list that the issue will be moved from. |
 | <a id="mutationissuemovelistiid"></a>`iid` | [`String!`](#string) | IID of the issue to mutate. |
 | <a id="mutationissuemovelistmoveafterid"></a>`moveAfterId` | [`ID`](#id) | ID of issue that should be placed after the current issue. |
@@ -6228,6 +6272,10 @@ Input type: `IssueSetDueDateInput`
 
 ### `Mutation.issueSetEpic`
 
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
+
 Input type: `IssueSetEpicInput`
 
 #### Arguments
@@ -6235,7 +6283,7 @@ Input type: `IssueSetEpicInput`
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="mutationissuesetepicclientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
-| <a id="mutationissuesetepicepicid"></a>`epicId` | [`EpicID`](#epicid) | Global ID of the epic to be assigned to the issue, epic will be removed if absent or set to null. |
+| <a id="mutationissuesetepicepicid"></a>`epicId` **{warning-solid}** | [`EpicID`](#epicid) | **Deprecated:** This will be replaced by WorkItem hierarchyWidget. Deprecated in GitLab 17.5. |
 | <a id="mutationissuesetepiciid"></a>`iid` | [`String!`](#string) | IID of the issue to mutate. |
 | <a id="mutationissuesetepicprojectpath"></a>`projectPath` | [`ID!`](#id) | Project the issue to mutate is in. |
 
@@ -6432,7 +6480,7 @@ Input type: `IssuesBulkUpdateInput`
 | <a id="mutationissuesbulkupdateaddlabelids"></a>`addLabelIds` | [`[LabelID!]`](#labelid) | Global ID array of the labels that will be added to the issues. |
 | <a id="mutationissuesbulkupdateassigneeids"></a>`assigneeIds` | [`[UserID!]`](#userid) | Global ID array of the users that will be assigned to the given issues. Existing assignees will be replaced with the ones on this list. |
 | <a id="mutationissuesbulkupdateclientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
-| <a id="mutationissuesbulkupdateepicid"></a>`epicId` | [`EpicID`](#epicid) | Global ID of the epic that will be assigned to the issues. |
+| <a id="mutationissuesbulkupdateepicid"></a>`epicId` **{warning-solid}** | [`EpicID`](#epicid) | **Deprecated:** This will be replaced by WorkItem hierarchyWidget. Deprecated in GitLab 17.5. |
 | <a id="mutationissuesbulkupdatehealthstatus"></a>`healthStatus` | [`HealthStatus`](#healthstatus) | Health status that will be assigned to the issues. |
 | <a id="mutationissuesbulkupdateids"></a>`ids` | [`[IssueID!]!`](#issueid) | Global ID array of the issues that will be updated. IDs that the user can't update will be ignored. A max of 100 can be provided. |
 | <a id="mutationissuesbulkupdateiterationid"></a>`iterationId` | [`IterationID`](#iterationid) | Global ID of the iteration that will be assigned to the issues. |
@@ -8427,6 +8475,10 @@ Input type: `PrometheusIntegrationUpdateInput`
 
 ### `Mutation.promoteToEpic`
 
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
+
 Input type: `PromoteToEpicInput`
 
 #### Arguments
@@ -9522,6 +9574,32 @@ Input type: `TodosMarkAllDoneInput`
 | <a id="mutationtodosmarkalldoneerrors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during execution of the mutation. |
 | <a id="mutationtodosmarkalldonetodos"></a>`todos` | [`[Todo!]!`](#todo) | Updated to-do items. |
 
+### `Mutation.updateAbuseReportNote`
+
+Updates an abuse report Note.
+
+DETAILS:
+**Introduced** in GitLab 17.5.
+**Status**: Experiment.
+
+Input type: `UpdateAbuseReportNoteInput`
+
+#### Arguments
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutationupdateabusereportnotebody"></a>`body` | [`String!`](#string) | Content of the note. |
+| <a id="mutationupdateabusereportnoteclientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutationupdateabusereportnoteid"></a>`id` | [`AntiAbuseReportsNoteID!`](#antiabusereportsnoteid) | Global ID of the note to update. |
+
+#### Fields
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutationupdateabusereportnoteclientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutationupdateabusereportnoteerrors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during execution of the mutation. |
+| <a id="mutationupdateabusereportnotenote"></a>`note` | [`AbuseReportNote!`](#abusereportnote) | Abuse report note after mutation. |
+
 ### `Mutation.updateAlertStatus`
 
 Input type: `UpdateAlertStatusInput`
@@ -9575,6 +9653,10 @@ Input type: `UpdateBoardInput`
 | <a id="mutationupdateboarderrors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during execution of the mutation. |
 
 ### `Mutation.updateBoardEpicUserPreferences`
+
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
 
 Input type: `UpdateBoardEpicUserPreferencesInput`
 
@@ -9764,6 +9846,10 @@ Input type: `UpdateDependencyProxySettingsInput`
 
 ### `Mutation.updateEpic`
 
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
+
 Input type: `UpdateEpicInput`
 
 #### Arguments
@@ -9796,6 +9882,10 @@ Input type: `UpdateEpicInput`
 | <a id="mutationupdateepicerrors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during execution of the mutation. |
 
 ### `Mutation.updateEpicBoardList`
+
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
 
 Input type: `UpdateEpicBoardListInput`
 
@@ -9855,7 +9945,7 @@ Input type: `UpdateIssueInput`
 | <a id="mutationupdateissueconfidential"></a>`confidential` | [`Boolean`](#boolean) | Indicates the issue is confidential. |
 | <a id="mutationupdateissuedescription"></a>`description` | [`String`](#string) | Description of the issue. |
 | <a id="mutationupdateissueduedate"></a>`dueDate` | [`ISO8601Date`](#iso8601date) | Due date of the issue. |
-| <a id="mutationupdateissueepicid"></a>`epicId` | [`EpicID`](#epicid) | ID of the parent epic. NULL when removing the association. |
+| <a id="mutationupdateissueepicid"></a>`epicId` **{warning-solid}** | [`EpicID`](#epicid) | **Deprecated:** This will be replaced by WorkItem hierarchyWidget. Deprecated in GitLab 17.5. |
 | <a id="mutationupdateissuehealthstatus"></a>`healthStatus` | [`HealthStatus`](#healthstatus) | Desired health status. |
 | <a id="mutationupdateissueiid"></a>`iid` | [`String!`](#string) | IID of the issue to mutate. |
 | <a id="mutationupdateissuelabelids"></a>`labelIds` | [`[ID!]`](#id) | IDs of labels to be set. Replaces existing issue labels. |
@@ -10750,7 +10840,7 @@ Input type: `WorkItemCreateInput`
 | <a id="mutationworkitemcreatelinkeditemswidget"></a>`linkedItemsWidget` | [`WorkItemWidgetLinkedItemsCreateInput`](#workitemwidgetlinkeditemscreateinput) | Input for linked items widget. |
 | <a id="mutationworkitemcreatemilestonewidget"></a>`milestoneWidget` | [`WorkItemWidgetMilestoneInput`](#workitemwidgetmilestoneinput) | Input for milestone widget. |
 | <a id="mutationworkitemcreatenamespacepath"></a>`namespacePath` | [`ID`](#id) | Full path of the namespace(project or group) the work item is created in. |
-| <a id="mutationworkitemcreateprojectpath"></a>`projectPath` **{warning-solid}** | [`ID`](#id) | **Deprecated:** Please use namespace_path instead. That will cover for both projects and groups. Deprecated in GitLab 15.10. |
+| <a id="mutationworkitemcreateprojectpath"></a>`projectPath` **{warning-solid}** | [`ID`](#id) | **Deprecated:** Please use namespacePath instead. That will cover for both projects and groups. Deprecated in GitLab 15.10. |
 | <a id="mutationworkitemcreaterolledupdateswidget"></a>`rolledupDatesWidget` **{warning-solid}** | [`WorkItemWidgetRolledupDatesInput`](#workitemwidgetrolledupdatesinput) | **Deprecated:** **Status**: Experiment. Introduced in GitLab 16.9. |
 | <a id="mutationworkitemcreatetitle"></a>`title` | [`String!`](#string) | Title of the work item. |
 | <a id="mutationworkitemcreateweightwidget"></a>`weightWidget` | [`WorkItemWidgetWeightInput`](#workitemwidgetweightinput) | Input for weight widget. |
@@ -10998,7 +11088,7 @@ Input type: `WorkspaceCreateInput`
 | <a id="mutationworkspacecreatedesiredstate"></a>`desiredState` | [`String!`](#string) | Desired state of the created workspace. |
 | <a id="mutationworkspacecreatedevfilepath"></a>`devfilePath` | [`String!`](#string) | Project repo git path containing the devfile used to configure the workspace. |
 | <a id="mutationworkspacecreatedevfileref"></a>`devfileRef` | [`String!`](#string) | Project repo git ref containing the devfile used to configure the workspace. |
-| <a id="mutationworkspacecreateeditor"></a>`editor` | [`String!`](#string) | Editor to inject into the created workspace. Must match a configured template. |
+| <a id="mutationworkspacecreateeditor"></a>`editor` **{warning-solid}** | [`String`](#string) | **Deprecated:** Argument is not used. Deprecated in GitLab 17.5. |
 | <a id="mutationworkspacecreatemaxhoursbeforetermination"></a>`maxHoursBeforeTermination` | [`Int!`](#int) | Maximum hours the workspace can exist before it is automatically terminated. |
 | <a id="mutationworkspacecreateprojectid"></a>`projectId` | [`ProjectID!`](#projectid) | ID of the project that will provide the Devfile for the created workspace. |
 | <a id="mutationworkspacecreatevariables"></a>`variables` | [`[WorkspaceVariableInput!]`](#workspacevariableinput) | Variables to inject into the workspace. |
@@ -11301,6 +11391,29 @@ The edge type for [`AiSelfHostedModel`](#aiselfhostedmodel).
 | ---- | ---- | ----------- |
 | <a id="aiselfhostedmodeledgecursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="aiselfhostedmodeledgenode"></a>`node` | [`AiSelfHostedModel`](#aiselfhostedmodel) | The item at the end of the edge. |
+
+#### `AiUserMetricsConnection`
+
+The connection type for [`AiUserMetrics`](#aiusermetrics).
+
+##### Fields
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aiusermetricsconnectionedges"></a>`edges` | [`[AiUserMetricsEdge]`](#aiusermetricsedge) | A list of edges. |
+| <a id="aiusermetricsconnectionnodes"></a>`nodes` | [`[AiUserMetrics]`](#aiusermetrics) | A list of nodes. |
+| <a id="aiusermetricsconnectionpageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `AiUserMetricsEdge`
+
+The edge type for [`AiUserMetrics`](#aiusermetrics).
+
+##### Fields
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aiusermetricsedgecursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="aiusermetricsedgenode"></a>`node` | [`AiUserMetrics`](#aiusermetrics) | The item at the end of the edge. |
 
 #### `AlertManagementAlertConnection`
 
@@ -12689,6 +12802,30 @@ The edge type for [`CustomEmoji`](#customemoji).
 | ---- | ---- | ----------- |
 | <a id="customemojiedgecursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="customemojiedgenode"></a>`node` | [`CustomEmoji`](#customemoji) | The item at the end of the edge. |
+
+#### `CustomFieldConnection`
+
+The connection type for [`CustomField`](#customfield).
+
+##### Fields
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="customfieldconnectioncount"></a>`count` | [`Int!`](#int) | Total count of collection. |
+| <a id="customfieldconnectionedges"></a>`edges` | [`[CustomFieldEdge]`](#customfieldedge) | A list of edges. |
+| <a id="customfieldconnectionnodes"></a>`nodes` | [`[CustomField]`](#customfield) | A list of nodes. |
+| <a id="customfieldconnectionpageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `CustomFieldEdge`
+
+The edge type for [`CustomField`](#customfield).
+
+##### Fields
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="customfieldedgecursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="customfieldedgenode"></a>`node` | [`CustomField`](#customfield) | The item at the end of the edge. |
 
 #### `CustomerRelationsContactConnection`
 
@@ -17162,6 +17299,21 @@ An abuse report.
 | <a id="abusereportdiscussionresolvedat"></a>`resolvedAt` | [`Time`](#time) | Timestamp of when the object was resolved. |
 | <a id="abusereportdiscussionresolvedby"></a>`resolvedBy` | [`UserCore`](#usercore) | User who resolved the object. |
 
+### `AbuseReportLabel`
+
+#### Fields
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="abusereportlabelcolor"></a>`color` | [`String!`](#string) | Background color of the label. |
+| <a id="abusereportlabelcreatedat"></a>`createdAt` | [`Time!`](#time) | When the label was created. |
+| <a id="abusereportlabeldescription"></a>`description` | [`String`](#string) | Description of the label (Markdown rendered as HTML for caching). |
+| <a id="abusereportlabeldescriptionhtml"></a>`descriptionHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of `description`. |
+| <a id="abusereportlabelid"></a>`id` | [`ID!`](#id) | Label ID. |
+| <a id="abusereportlabeltextcolor"></a>`textColor` | [`String!`](#string) | Text color of the label. |
+| <a id="abusereportlabeltitle"></a>`title` | [`String!`](#string) | Content of the label. |
+| <a id="abusereportlabelupdatedat"></a>`updatedAt` | [`Time!`](#time) | When the label was last updated. |
+
 ### `AbuseReportNote`
 
 #### Fields
@@ -17819,8 +17971,9 @@ Extra metadata for AI message.
 | <a id="aimetricscodesuggestionsacceptedcount"></a>`codeSuggestionsAcceptedCount` | [`Int`](#int) | Total count of code suggestions accepted by code contributors. |
 | <a id="aimetricscodesuggestionscontributorscount"></a>`codeSuggestionsContributorsCount` | [`Int`](#int) | Number of code contributors who used GitLab Duo Code Suggestions features. |
 | <a id="aimetricscodesuggestionsshowncount"></a>`codeSuggestionsShownCount` | [`Int`](#int) | Total count of code suggestions shown to code contributors. |
+| <a id="aimetricsduoassigneduserscount"></a>`duoAssignedUsersCount` | [`Int`](#int) | Total assigned Duo Pro and Enterprise seats. Ignores time period filter. Returns current data. |
 | <a id="aimetricsduochatcontributorscount"></a>`duoChatContributorsCount` | [`Int`](#int) | Number of contributors who used GitLab Duo Chat features. |
-| <a id="aimetricsduoproassigneduserscount"></a>`duoProAssignedUsersCount` | [`Int`](#int) | Number of assigned Duo Pro seats. Ignores time period filter and always returns current data. |
+| <a id="aimetricsduoproassigneduserscount"></a>`duoProAssignedUsersCount` **{warning-solid}** | [`Int`](#int) | **Deprecated** in GitLab 17.6. use duoAssignedUsersCount for the same behavior. |
 
 ### `AiSelfHostedModel`
 
@@ -17847,6 +18000,16 @@ Self-hosted LLM servers.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="aiusagedatacodesuggestionevents"></a>`codeSuggestionEvents` | [`CodeSuggestionEventConnection`](#codesuggestioneventconnection) | Events related to code suggestions feature. (see [Connections](#connections)) |
+
+### `AiUserMetrics`
+
+#### Fields
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aiusermetricscodesuggestionsacceptedcount"></a>`codeSuggestionsAcceptedCount` | [`Int`](#int) | Total count of code suggestions accepted by the user. |
+| <a id="aiusermetricsduochatinteractionscount"></a>`duoChatInteractionsCount` | [`Int`](#int) | Number of user interactions with GitLab Duo Chat. |
+| <a id="aiusermetricsuser"></a>`user` | [`UserCore!`](#usercore) | Metrics user. |
 
 ### `AlertManagementAlert`
 
@@ -19255,6 +19418,20 @@ CI/CD config variables.
 | <a id="ciconfigvariablevalue"></a>`value` | [`String`](#string) | Value of the variable. |
 | <a id="ciconfigvariablevalueoptions"></a>`valueOptions` | [`[String!]`](#string) | Value options for the variable. |
 
+### `CiDurationStatistics`
+
+Histogram of durations for a group of CI/CD jobs or pipelines.
+
+#### Fields
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="cidurationstatisticsp50"></a>`p50` **{warning-solid}** | [`Duration`](#duration) | **Introduced** in GitLab 15.8. **Status**: Experiment. 50th percentile. 50% of the durations are lower than this value. |
+| <a id="cidurationstatisticsp75"></a>`p75` **{warning-solid}** | [`Duration`](#duration) | **Introduced** in GitLab 15.8. **Status**: Experiment. 75th percentile. 75% of the durations are lower than this value. |
+| <a id="cidurationstatisticsp90"></a>`p90` **{warning-solid}** | [`Duration`](#duration) | **Introduced** in GitLab 15.8. **Status**: Experiment. 90th percentile. 90% of the durations are lower than this value. |
+| <a id="cidurationstatisticsp95"></a>`p95` **{warning-solid}** | [`Duration`](#duration) | **Introduced** in GitLab 15.8. **Status**: Experiment. 95th percentile. 95% of the durations are lower than this value. |
+| <a id="cidurationstatisticsp99"></a>`p99` **{warning-solid}** | [`Duration`](#duration) | **Introduced** in GitLab 15.8. **Status**: Experiment. 99th percentile. 99% of the durations are lower than this value. |
+
 ### `CiFreezePeriod`
 
 Represents a deployment freeze window of a project.
@@ -19432,20 +19609,6 @@ Returns [`String!`](#string).
 | ---- | ---- | ----------- |
 | <a id="cijobtracehtmlsummarylastlines"></a>`lastLines` | [`Int`](#int) | Number of tail lines to return, up to a maximum of 100 lines. |
 
-### `CiJobsDurationStatistics`
-
-Representation of duration statistics for a group of CI jobs.
-
-#### Fields
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="cijobsdurationstatisticsp50"></a>`p50` **{warning-solid}** | [`Duration`](#duration) | **Introduced** in GitLab 15.8. **Status**: Experiment. 50th percentile. 50% of the durations are lower than this value. |
-| <a id="cijobsdurationstatisticsp75"></a>`p75` **{warning-solid}** | [`Duration`](#duration) | **Introduced** in GitLab 15.8. **Status**: Experiment. 75th percentile. 75% of the durations are lower than this value. |
-| <a id="cijobsdurationstatisticsp90"></a>`p90` **{warning-solid}** | [`Duration`](#duration) | **Introduced** in GitLab 15.8. **Status**: Experiment. 90th percentile. 90% of the durations are lower than this value. |
-| <a id="cijobsdurationstatisticsp95"></a>`p95` **{warning-solid}** | [`Duration`](#duration) | **Introduced** in GitLab 15.8. **Status**: Experiment. 95th percentile. 95% of the durations are lower than this value. |
-| <a id="cijobsdurationstatisticsp99"></a>`p99` **{warning-solid}** | [`Duration`](#duration) | **Introduced** in GitLab 15.8. **Status**: Experiment. 99th percentile. 99% of the durations are lower than this value. |
-
 ### `CiJobsStatistics`
 
 Statistics for a group of CI jobs.
@@ -19454,7 +19617,7 @@ Statistics for a group of CI jobs.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="cijobsstatisticsqueuedduration"></a>`queuedDuration` | [`CiJobsDurationStatistics`](#cijobsdurationstatistics) | Statistics for amount of time that jobs were waiting to be picked up. The calculation is performed based on the most recent 100 jobs executed by the 5000 most recently created runners in context. If no filter is applied to runners, the calculation is performed based on the most recent 100 jobs globally. |
+| <a id="cijobsstatisticsqueuedduration"></a>`queuedDuration` | [`CiDurationStatistics`](#cidurationstatistics) | Statistics for the amount of time that jobs were waiting to be picked up. The calculation is based on the 100 most recent jobs run by the 5000 most recently created runners in context. If no filter is applied to runners, the calculation uses the 100 most recent jobs globally. |
 
 ### `CiManualVariable`
 
@@ -19962,6 +20125,7 @@ Code Quality report for a pipeline.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="codesuggestioneventevent"></a>`event` | [`AiUsageCodeSuggestionEvent!`](#aiusagecodesuggestionevent) | Type of the event. |
+| <a id="codesuggestioneventid"></a>`id` | [`ID!`](#id) | ID of the code suggestion event. |
 | <a id="codesuggestioneventlanguage"></a>`language` | [`String`](#string) | Programming language in the context of the suggestion. |
 | <a id="codesuggestioneventsuggestionsize"></a>`suggestionSize` | [`String`](#string) | Size of the code suggestion. |
 | <a id="codesuggestioneventtimestamp"></a>`timestamp` | [`Time!`](#time) | When the event happened. |
@@ -21060,6 +21224,34 @@ A custom emoji uploaded by user.
 | <a id="customemojipermissionscreatecustomemoji"></a>`createCustomEmoji` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_custom_emoji` on this resource. |
 | <a id="customemojipermissionsdeletecustomemoji"></a>`deleteCustomEmoji` | [`Boolean!`](#boolean) | If `true`, the user can perform `delete_custom_emoji` on this resource. |
 | <a id="customemojipermissionsreadcustomemoji"></a>`readCustomEmoji` | [`Boolean!`](#boolean) | If `true`, the user can perform `read_custom_emoji` on this resource. |
+
+### `CustomField`
+
+Represents a custom field.
+
+#### Fields
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="customfieldactive"></a>`active` | [`Boolean!`](#boolean) | Whether the custom field is active. |
+| <a id="customfieldcreatedat"></a>`createdAt` | [`Time!`](#time) | Timestamp when the custom field was created. |
+| <a id="customfieldfieldtype"></a>`fieldType` | [`CustomFieldType!`](#customfieldtype) | Type of custom field. |
+| <a id="customfieldid"></a>`id` | [`IssuablesCustomFieldID!`](#issuablescustomfieldid) | Global ID of the custom field. |
+| <a id="customfieldname"></a>`name` | [`String!`](#string) | Name of the custom field. |
+| <a id="customfieldselectoptions"></a>`selectOptions` | [`[CustomFieldSelectOption!]`](#customfieldselectoption) | Available options for a select field. |
+| <a id="customfieldupdatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp when the custom field was last updated. |
+| <a id="customfieldworkitemtypes"></a>`workItemTypes` | [`[WorkItemType!]`](#workitemtype) | Work item types that the custom field is available on. |
+
+### `CustomFieldSelectOption`
+
+Represents a custom field select option.
+
+#### Fields
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="customfieldselectoptionid"></a>`id` | [`IssuablesCustomFieldSelectOptionID!`](#issuablescustomfieldselectoptionid) | Global ID of the custom field select option. |
+| <a id="customfieldselectoptionvalue"></a>`value` | [`String!`](#string) | Value of the custom field select option. |
 
 ### `CustomerRelationsContact`
 
@@ -22512,7 +22704,7 @@ Relationship between an epic and an issue.
 | <a id="epicissueduedate"></a>`dueDate` | [`Time`](#time) | Due date of the issue. |
 | <a id="epicissueemailsdisabled"></a>`emailsDisabled` **{warning-solid}** | [`Boolean!`](#boolean) | **Deprecated** in GitLab 16.3. Use `emails_enabled`. |
 | <a id="epicissueemailsenabled"></a>`emailsEnabled` | [`Boolean!`](#boolean) | Indicates if the parent project or group has email notifications disabled: `false` if email notifications are disabled. |
-| <a id="epicissueepic"></a>`epic` | [`Epic`](#epic) | Epic to which this issue belongs. |
+| <a id="epicissueepic"></a>`epic` **{warning-solid}** | [`Epic`](#epic) | **Deprecated** in GitLab 17.5. Replaced by WorkItem type. |
 | <a id="epicissueepicissueid"></a>`epicIssueId` | [`ID!`](#id) | ID of the epic-issue relation. |
 | <a id="epicissueescalationpolicy"></a>`escalationPolicy` | [`EscalationPolicyType`](#escalationpolicytype) | Escalation policy associated with the issue. Available for issues which support escalation. |
 | <a id="epicissueescalationstatus"></a>`escalationStatus` | [`IssueEscalationStatus`](#issueescalationstatus) | Escalation status of the issue. |
@@ -23406,8 +23598,8 @@ GPG signature for a signed commit.
 | <a id="groupemailsdisabled"></a>`emailsDisabled` | [`Boolean`](#boolean) | Indicates if a group has email notifications disabled. |
 | <a id="groupemailsenabled"></a>`emailsEnabled` | [`Boolean`](#boolean) | Indicates if a group has email notifications enabled. |
 | <a id="groupenforcefreeusercap"></a>`enforceFreeUserCap` | [`Boolean`](#boolean) | Indicates whether the group has limited users for a free plan. |
-| <a id="groupepicboards"></a>`epicBoards` | [`EpicBoardConnection`](#epicboardconnection) | Find epic boards. (see [Connections](#connections)) |
-| <a id="groupepicsenabled"></a>`epicsEnabled` | [`Boolean`](#boolean) | Indicates if Epics are enabled for namespace. |
+| <a id="groupepicboards"></a>`epicBoards` **{warning-solid}** | [`EpicBoardConnection`](#epicboardconnection) | **Deprecated** in GitLab 17.5. Replaced by WorkItem type. |
+| <a id="groupepicsenabled"></a>`epicsEnabled` **{warning-solid}** | [`Boolean`](#boolean) | **Deprecated** in GitLab 17.5. Replaced by WorkItem type. |
 | <a id="groupexternalauditeventdestinations"></a>`externalAuditEventDestinations` | [`ExternalAuditEventDestinationConnection`](#externalauditeventdestinationconnection) | External locations that receive audit events belonging to the group. (see [Connections](#connections)) |
 | <a id="groupexternalauditeventstreamingdestinations"></a>`externalAuditEventStreamingDestinations` **{warning-solid}** | [`GroupAuditEventStreamingDestinationConnection`](#groupauditeventstreamingdestinationconnection) | **Introduced** in GitLab 16.11. **Status**: Experiment. External destinations that receive audit events belonging to the group. |
 | <a id="groupflowmetrics"></a>`flowMetrics` **{warning-solid}** | [`GroupValueStreamAnalyticsFlowMetrics`](#groupvaluestreamanalyticsflowmetrics) | **Introduced** in GitLab 15.10. **Status**: Experiment. Flow metrics for value stream analytics. |
@@ -23538,6 +23730,27 @@ Returns [`AiMetrics`](#aimetrics).
 | ---- | ---- | ----------- |
 | <a id="groupaimetricsenddate"></a>`endDate` | [`Date`](#date) | Date range to end at. Default is the end of current month. |
 | <a id="groupaimetricsstartdate"></a>`startDate` | [`Date`](#date) | Date range to start from. Default is the beginning of current month. |
+
+##### `Group.aiUserMetrics`
+
+AI-related user metrics.
+
+DETAILS:
+**Introduced** in GitLab 17.5.
+**Status**: Experiment.
+
+Returns [`AiUserMetricsConnection`](#aiusermetricsconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+###### Arguments
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="groupaiusermetricsenddate"></a>`endDate` | [`Date`](#date) | Date range to end at. Default is the end of current month. |
+| <a id="groupaiusermetricsstartdate"></a>`startDate` | [`Date`](#date) | Date range to start from. Default is the beginning of current month. |
 
 ##### `Group.approvalPolicies`
 
@@ -23792,6 +24005,28 @@ four standard [pagination arguments](#pagination-arguments):
 | ---- | ---- | ----------- |
 | <a id="groupcustomemojiincludeancestorgroups"></a>`includeAncestorGroups` | [`Boolean`](#boolean) | Includes custom emoji from parent groups. |
 
+##### `Group.customFields`
+
+Custom fields configured for the group. Available only when feature flag `custom_fields_feature` is enabled.
+
+DETAILS:
+**Introduced** in GitLab 17.5.
+**Status**: Experiment.
+
+Returns [`CustomFieldConnection`](#customfieldconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+###### Arguments
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="groupcustomfieldsactive"></a>`active` | [`Boolean`](#boolean) | Filter for active fields. If `false`, excludes active fields. If `true`, returns only active fields. |
+| <a id="groupcustomfieldssearch"></a>`search` | [`String`](#string) | Search query for custom field name. |
+| <a id="groupcustomfieldsworkitemtypeids"></a>`workItemTypeIds` | [`[WorkItemsTypeID!]`](#workitemstypeid) | Filter custom fields associated to the given work item types. If empty, returns custom fields not associated to any work item type. |
+
 ##### `Group.customizableDashboardVisualizations`
 
 Visualizations of the group or associated configuration project.
@@ -23913,6 +24148,10 @@ four standard [pagination arguments](#pagination-arguments):
 
 Find a single epic.
 
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
+
 Returns [`Epic`](#epic).
 
 ###### Arguments
@@ -23947,6 +24186,10 @@ Returns [`Epic`](#epic).
 
 Find a single epic board.
 
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
+
 Returns [`EpicBoard`](#epicboard).
 
 ###### Arguments
@@ -23958,6 +24201,10 @@ Returns [`EpicBoard`](#epicboard).
 ##### `Group.epics`
 
 Find epics.
+
+DETAILS:
+**Deprecated** in GitLab 17.5.
+Replaced by WorkItem type.
 
 Returns [`EpicConnection`](#epicconnection).
 
@@ -24909,6 +25156,7 @@ Represents a Group Membership.
 | <a id="groupmemberexpiresat"></a>`expiresAt` | [`Time`](#time) | Date and time the membership expires. |
 | <a id="groupmembergroup"></a>`group` | [`Group`](#group) | Group that a user is a member of. |
 | <a id="groupmemberid"></a>`id` | [`ID!`](#id) | ID of the member. |
+| <a id="groupmemberlastactivityon"></a>`lastActivityOn` | [`Time`](#time) | Date of last activity in the namespace (group or project). |
 | <a id="groupmembernotificationemail"></a>`notificationEmail` | [`String`](#string) | Group notification email for user. Only available for admins. |
 | <a id="groupmemberupdatedat"></a>`updatedAt` | [`Time`](#time) | Date and time the membership was last updated. |
 | <a id="groupmemberuser"></a>`user` | [`UserCore`](#usercore) | User that is associated with the member object. |
@@ -25494,7 +25742,7 @@ Describes an issuable resource link for incident issues.
 | <a id="issueduedate"></a>`dueDate` | [`Time`](#time) | Due date of the issue. |
 | <a id="issueemailsdisabled"></a>`emailsDisabled` **{warning-solid}** | [`Boolean!`](#boolean) | **Deprecated** in GitLab 16.3. Use `emails_enabled`. |
 | <a id="issueemailsenabled"></a>`emailsEnabled` | [`Boolean!`](#boolean) | Indicates if the parent project or group has email notifications disabled: `false` if email notifications are disabled. |
-| <a id="issueepic"></a>`epic` | [`Epic`](#epic) | Epic to which this issue belongs. |
+| <a id="issueepic"></a>`epic` **{warning-solid}** | [`Epic`](#epic) | **Deprecated** in GitLab 17.5. Replaced by WorkItem type. |
 | <a id="issueescalationpolicy"></a>`escalationPolicy` | [`EscalationPolicyType`](#escalationpolicytype) | Escalation policy associated with the issue. Available for issues which support escalation. |
 | <a id="issueescalationstatus"></a>`escalationStatus` | [`IssueEscalationStatus`](#issueescalationstatus) | Escalation status of the issue. |
 | <a id="issueexternalauthor"></a>`externalAuthor` | [`String`](#string) | Email address of non-GitLab user reporting the issue. For guests, the email address is obfuscated. |
@@ -25834,7 +26082,9 @@ Represents an SSH key.
 | <a id="keyexpiresat"></a>`expiresAt` | [`Time!`](#time) | Timestamp of when the key expires. It's null if it never expires. |
 | <a id="keyid"></a>`id` | [`ID!`](#id) | ID of the key. |
 | <a id="keykey"></a>`key` | [`String!`](#string) | Public key of the key pair. |
+| <a id="keyname"></a>`name` | [`String`](#string) | Name or title of this object. |
 | <a id="keytitle"></a>`title` | [`String!`](#string) | Title of the key. |
+| <a id="keyweburl"></a>`webUrl` | [`String`](#string) | URL of this object. |
 
 ### `Label`
 
@@ -25843,14 +26093,14 @@ Represents an SSH key.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="labelcolor"></a>`color` | [`String!`](#string) | Background color of the label. |
-| <a id="labelcreatedat"></a>`createdAt` | [`Time!`](#time) | When this label was created. |
+| <a id="labelcreatedat"></a>`createdAt` | [`Time!`](#time) | When the label was created. |
 | <a id="labeldescription"></a>`description` | [`String`](#string) | Description of the label (Markdown rendered as HTML for caching). |
 | <a id="labeldescriptionhtml"></a>`descriptionHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of `description`. |
 | <a id="labelid"></a>`id` | [`ID!`](#id) | Label ID. |
 | <a id="labellockonmerge"></a>`lockOnMerge` | [`Boolean!`](#boolean) | Indicates this label is locked for merge requests that have been merged. |
 | <a id="labeltextcolor"></a>`textColor` | [`String!`](#string) | Text color of the label. |
 | <a id="labeltitle"></a>`title` | [`String!`](#string) | Content of the label. |
-| <a id="labelupdatedat"></a>`updatedAt` | [`Time!`](#time) | When this label was last updated. |
+| <a id="labelupdatedat"></a>`updatedAt` | [`Time!`](#time) | When the label was last updated. |
 
 ### `LfsObjectRegistry`
 
@@ -28571,6 +28821,7 @@ Describes where code is deployed for a project organized by folder.
 | <a id="notebodyhtml"></a>`bodyHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of the content of the note. |
 | <a id="notecreatedat"></a>`createdAt` | [`Time!`](#time) | Timestamp of the note creation. |
 | <a id="notediscussion"></a>`discussion` | [`Discussion`](#discussion) | Discussion the note is a part of. |
+| <a id="noteexternalauthor"></a>`externalAuthor` | [`String`](#string) | Email address of non-GitLab user adding the note. For guests, the email address is obfuscated. |
 | <a id="noteid"></a>`id` | [`NoteID!`](#noteid) | ID of the note. |
 | <a id="noteimported"></a>`imported` | [`Boolean`](#boolean) | Indicates whether the note was imported. |
 | <a id="noteinternal"></a>`internal` | [`Boolean`](#boolean) | Indicates if the note is internal. |
@@ -29211,6 +29462,7 @@ Represents a Pending Group Membership.
 | <a id="pendinggroupmemberexpiresat"></a>`expiresAt` | [`Time`](#time) | Date and time the membership expires. |
 | <a id="pendinggroupmemberid"></a>`id` | [`ID!`](#id) | ID of the member. |
 | <a id="pendinggroupmemberinvited"></a>`invited` | [`Boolean`](#boolean) | Whether the pending member has been invited. |
+| <a id="pendinggroupmemberlastactivityon"></a>`lastActivityOn` | [`Time`](#time) | Date of last activity in the namespace (group or project). |
 | <a id="pendinggroupmembername"></a>`name` | [`String`](#string) | Name of the pending member. |
 | <a id="pendinggroupmemberupdatedat"></a>`updatedAt` | [`Time`](#time) | Date and time the membership was last updated. |
 | <a id="pendinggroupmemberuser"></a>`user` | [`UserCore`](#usercore) | User that is associated with the member object. |
@@ -29248,6 +29500,7 @@ Represents a Pending Project Membership.
 | <a id="pendingprojectmemberexpiresat"></a>`expiresAt` | [`Time`](#time) | Date and time the membership expires. |
 | <a id="pendingprojectmemberid"></a>`id` | [`ID!`](#id) | ID of the member. |
 | <a id="pendingprojectmemberinvited"></a>`invited` | [`Boolean`](#boolean) | Whether the pending member has been invited. |
+| <a id="pendingprojectmemberlastactivityon"></a>`lastActivityOn` | [`Time`](#time) | Date of last activity in the namespace (group or project). |
 | <a id="pendingprojectmembername"></a>`name` | [`String`](#string) | Name of the pending member. |
 | <a id="pendingprojectmemberupdatedat"></a>`updatedAt` | [`Time`](#time) | Date and time the membership was last updated. |
 | <a id="pendingprojectmemberuser"></a>`user` | [`UserCore`](#usercore) | User that is associated with the member object. |
@@ -29446,6 +29699,7 @@ Returns [`TestSuite`](#testsuite).
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="pipelineanalyticsperioddurationstatistics"></a>`durationStatistics` **{warning-solid}** | [`CiDurationStatistics`](#cidurationstatistics) | **Introduced** in GitLab 17.5. **Status**: Experiment. Pipeline duration statistics. |
 | <a id="pipelineanalyticsperiodlabel"></a>`label` **{warning-solid}** | [`String`](#string) | **Introduced** in GitLab 17.5. **Status**: Experiment. Label for the data point. |
 
 #### Fields with arguments
@@ -29464,7 +29718,7 @@ Returns [`BigInt`](#bigint).
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="pipelineanalyticsperiodcountstatus"></a>`status` | [`PipelineAnalyticsJobStatus`](#pipelineanalyticsjobstatus) | Filter totals by status. If not provided, the totals for all pipelines are returned. |
+| <a id="pipelineanalyticsperiodcountstatus"></a>`status` | [`PipelineAnalyticsJobStatus!`](#pipelineanalyticsjobstatus) | Filter pipeline totals by status. If not specified, totals for all pipeline statuses are returned. |
 
 ### `PipelineArtifactRegistry`
 
@@ -29985,6 +30239,27 @@ Returns [`AiMetrics`](#aimetrics).
 | ---- | ---- | ----------- |
 | <a id="projectaimetricsenddate"></a>`endDate` | [`Date`](#date) | Date range to end at. Default is the end of current month. |
 | <a id="projectaimetricsstartdate"></a>`startDate` | [`Date`](#date) | Date range to start from. Default is the beginning of current month. |
+
+##### `Project.aiUserMetrics`
+
+AI-related user metrics.
+
+DETAILS:
+**Introduced** in GitLab 17.5.
+**Status**: Experiment.
+
+Returns [`AiUserMetricsConnection`](#aiusermetricsconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+###### Arguments
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="projectaiusermetricsenddate"></a>`endDate` | [`Date`](#date) | Date range to end at. Default is the end of current month. |
+| <a id="projectaiusermetricsstartdate"></a>`startDate` | [`Date`](#date) | Date range to start from. Default is the beginning of current month. |
 
 ##### `Project.alertManagementAlert`
 
@@ -31220,6 +31495,8 @@ Returns [`PipelineAnalytics`](#pipelineanalytics).
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="projectpipelineanalyticsfromtime"></a>`fromTime` **{warning-solid}** | [`Time`](#time) | **Introduced** in GitLab 17.5. **Status**: Experiment. Start of the requested time frame. Defaults to the pipelines started in the past week. |
+| <a id="projectpipelineanalyticsref"></a>`ref` **{warning-solid}** | [`String`](#string) | **Introduced** in GitLab 17.5. **Status**: Experiment. Branch that triggered the pipeline. |
+| <a id="projectpipelineanalyticssource"></a>`source` **{warning-solid}** | [`PipelineCiSources`](#pipelinecisources) | **Introduced** in GitLab 17.5. **Status**: Experiment. Source of the pipeline. |
 | <a id="projectpipelineanalyticstotime"></a>`toTime` **{warning-solid}** | [`Time`](#time) | **Introduced** in GitLab 17.5. **Status**: Experiment. End of the requested time frame. Defaults to pipelines started before the current date. |
 
 ##### `Project.pipelineCounts`
@@ -31954,6 +32231,7 @@ Represents a Project Membership.
 | <a id="projectmembercreatedby"></a>`createdBy` | [`UserCore`](#usercore) | User that authorized membership. |
 | <a id="projectmemberexpiresat"></a>`expiresAt` | [`Time`](#time) | Date and time the membership expires. |
 | <a id="projectmemberid"></a>`id` | [`ID!`](#id) | ID of the member. |
+| <a id="projectmemberlastactivityon"></a>`lastActivityOn` | [`Time`](#time) | Date of last activity in the namespace (group or project). |
 | <a id="projectmemberproject"></a>`project` | [`Project`](#project) | Project that User is a member of. |
 | <a id="projectmemberupdatedat"></a>`updatedAt` | [`Time`](#time) | Date and time the membership was last updated. |
 | <a id="projectmemberuser"></a>`user` | [`UserCore`](#usercore) | User that is associated with the member object. |
@@ -36078,7 +36356,7 @@ Represents a remote development workspace.
 | <a id="workspacedevfilepath"></a>`devfilePath` | [`String!`](#string) | Path to the devfile used to configure the workspace. |
 | <a id="workspacedevfileref"></a>`devfileRef` | [`String!`](#string) | Git reference that contains the devfile used to configure the workspace. |
 | <a id="workspacedevfileweburl"></a>`devfileWebUrl` | [`String!`](#string) | Web URL of the devfile used to configure the workspace. |
-| <a id="workspaceeditor"></a>`editor` | [`String!`](#string) | Editor used to configure the workspace. Must match a configured template. |
+| <a id="workspaceeditor"></a>`editor` **{warning-solid}** | [`String!`](#string) | **Deprecated** in GitLab 17.5. Field is not used. |
 | <a id="workspaceid"></a>`id` | [`RemoteDevelopmentWorkspaceID!`](#remotedevelopmentworkspaceid) | Global ID of the workspace. |
 | <a id="workspacemaxhoursbeforetermination"></a>`maxHoursBeforeTermination` | [`Int!`](#int) | Number of hours until the workspace automatically terminates. |
 | <a id="workspacename"></a>`name` | [`String!`](#string) | Name of the workspace in Kubernetes. |
@@ -37009,6 +37287,17 @@ Values for sorting tags.
 | <a id="containerrepositorytagsortname_desc"></a>`NAME_DESC` | Ordered by name in descending order. |
 | <a id="containerrepositorytagsortpublished_at_asc"></a>`PUBLISHED_AT_ASC` | Ordered by published_at in ascending order. Only available for GitLab.com. |
 | <a id="containerrepositorytagsortpublished_at_desc"></a>`PUBLISHED_AT_DESC` | Ordered by published_at in descending order. Only available for GitLab.com. |
+
+### `CustomFieldType`
+
+Type of custom field.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="customfieldtypemulti_select"></a>`MULTI_SELECT` | Multi select field type. |
+| <a id="customfieldtypenumber"></a>`NUMBER` | Number field type. |
+| <a id="customfieldtypesingle_select"></a>`SINGLE_SELECT` | Single select field type. |
+| <a id="customfieldtypetext"></a>`TEXT` | Text field type. |
 
 ### `CustomerRelationsContactState`
 
@@ -38448,9 +38737,28 @@ Package type of a package protection rule resource.
 
 | Value | Description |
 | ----- | ----------- |
+| <a id="pipelineanalyticsjobstatusany"></a>`ANY` | Jobs with any status. |
 | <a id="pipelineanalyticsjobstatusfailed"></a>`FAILED` | Job that failed. |
 | <a id="pipelineanalyticsjobstatusother"></a>`OTHER` | Job that was canceled or skipped. |
 | <a id="pipelineanalyticsjobstatussuccess"></a>`SUCCESS` | Job that succeeded. |
+
+### `PipelineCiSources`
+
+Pipeline CI sources.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="pipelinecisourcesapi"></a>`API` | Pipeline created by an API event. |
+| <a id="pipelinecisourceschat"></a>`CHAT` | Pipeline created by a chat event. |
+| <a id="pipelinecisourcesexternal"></a>`EXTERNAL` | Pipeline created by an external event. |
+| <a id="pipelinecisourcesexternal_pull_request_event"></a>`EXTERNAL_PULL_REQUEST_EVENT` | Pipeline created by an external pull request event. |
+| <a id="pipelinecisourcesmerge_request_event"></a>`MERGE_REQUEST_EVENT` | Pipeline created by a merge request event. |
+| <a id="pipelinecisourcespipeline"></a>`PIPELINE` | Pipeline created by a pipeline event. |
+| <a id="pipelinecisourcespush"></a>`PUSH` | Pipeline created by a push event. |
+| <a id="pipelinecisourcesschedule"></a>`SCHEDULE` | Pipeline created by a schedule event. |
+| <a id="pipelinecisourcestrigger"></a>`TRIGGER` | Pipeline created by a trigger event. |
+| <a id="pipelinecisourcesunknown"></a>`UNKNOWN` | Pipeline created by an unknown event. |
+| <a id="pipelinecisourcesweb"></a>`WEB` | Pipeline created by a web event. |
 
 ### `PipelineConfigSourceEnum`
 
@@ -39063,6 +39371,8 @@ Values for sorting timelogs.
 | <a id="todoactionenumokr_checkin_requested"></a>`okr_checkin_requested` | An OKR assigned to the user requires an update. |
 | <a id="todoactionenumreview_requested"></a>`review_requested` | Review was requested from the user. |
 | <a id="todoactionenumreview_submitted"></a>`review_submitted` | Merge request authored by the user received a review. |
+| <a id="todoactionenumssh_key_expired"></a>`ssh_key_expired` | SSH key of the user has expired. |
+| <a id="todoactionenumssh_key_expiring_soon"></a>`ssh_key_expiring_soon` | SSH key of the user will expire soon. |
 | <a id="todoactionenumunmergeable"></a>`unmergeable` | Merge request authored by the user could not be merged. |
 
 ### `TodoSort`
@@ -39098,6 +39408,7 @@ Sort options for todos.
 | <a id="todotargetenumdesign"></a>`DESIGN` | Design. |
 | <a id="todotargetenumepic"></a>`EPIC` | An Epic. |
 | <a id="todotargetenumissue"></a>`ISSUE` | Issue. |
+| <a id="todotargetenumkey"></a>`KEY` | SSH key. |
 | <a id="todotargetenummergerequest"></a>`MERGEREQUEST` | Merge request. |
 | <a id="todotargetenumnamespace"></a>`NAMESPACE` | Namespace. |
 | <a id="todotargetenumproject"></a>`PROJECT` | Project. |
@@ -39391,35 +39702,35 @@ OwaspTop10 category of the vulnerability.
 
 | Value | Description |
 | ----- | ----------- |
-| <a id="vulnerabilityowasptop10a01_2021"></a>`A01_2021` | A01:2021-Broken Access Control, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a02_2021"></a>`A02_2021` | A02:2021-Cryptographic Failures, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a03_2021"></a>`A03_2021` | A03:2021-Injection, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a04_2021"></a>`A04_2021` | A04:2021-Insecure Design, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a05_2021"></a>`A05_2021` | A05:2021-Security Misconfiguration, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a06_2021"></a>`A06_2021` | A06:2021-Vulnerable and Outdated Components, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a07_2021"></a>`A07_2021` | A07:2021-Identification and Authentication Failures, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a08_2021"></a>`A08_2021` | A08:2021-Software and Data Integrity Failures, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a09_2021"></a>`A09_2021` | A09:2021-Security Logging and Monitoring Failures, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a10_2017"></a>`A10_2017` **{warning-solid}** | **Deprecated** in GitLab 17.4. 2017 values are no longer supported. Use 2021 values. |
-| <a id="vulnerabilityowasptop10a10_2021"></a>`A10_2021` | A10:2021-Server-Side Request Forgery, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a1_2017"></a>`A1_2017` **{warning-solid}** | **Deprecated** in GitLab 17.4. 2017 values are no longer supported. Use 2021 values. |
-| <a id="vulnerabilityowasptop10a1_2021"></a>`A1_2021` | A1:2021-Broken Access Control, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a2_2017"></a>`A2_2017` **{warning-solid}** | **Deprecated** in GitLab 17.4. 2017 values are no longer supported. Use 2021 values. |
-| <a id="vulnerabilityowasptop10a2_2021"></a>`A2_2021` | A2:2021-Cryptographic Failures, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a3_2017"></a>`A3_2017` **{warning-solid}** | **Deprecated** in GitLab 17.4. 2017 values are no longer supported. Use 2021 values. |
-| <a id="vulnerabilityowasptop10a3_2021"></a>`A3_2021` | A3:2021-Injection, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a4_2017"></a>`A4_2017` **{warning-solid}** | **Deprecated** in GitLab 17.4. 2017 values are no longer supported. Use 2021 values. |
-| <a id="vulnerabilityowasptop10a4_2021"></a>`A4_2021` | A4:2021-Insecure Design, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a5_2017"></a>`A5_2017` **{warning-solid}** | **Deprecated** in GitLab 17.4. 2017 values are no longer supported. Use 2021 values. |
-| <a id="vulnerabilityowasptop10a5_2021"></a>`A5_2021` | A5:2021-Security Misconfiguration, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a6_2017"></a>`A6_2017` **{warning-solid}** | **Deprecated** in GitLab 17.4. 2017 values are no longer supported. Use 2021 values. |
-| <a id="vulnerabilityowasptop10a6_2021"></a>`A6_2021` | A6:2021-Vulnerable and Outdated Components, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a7_2017"></a>`A7_2017` **{warning-solid}** | **Deprecated** in GitLab 17.4. 2017 values are no longer supported. Use 2021 values. |
-| <a id="vulnerabilityowasptop10a7_2021"></a>`A7_2021` | A7:2021-Identification and Authentication Failures, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a8_2017"></a>`A8_2017` **{warning-solid}** | **Deprecated** in GitLab 17.4. 2017 values are no longer supported. Use 2021 values. |
-| <a id="vulnerabilityowasptop10a8_2021"></a>`A8_2021` | A8:2021-Software and Data Integrity Failures, OWASP top 10 category. |
-| <a id="vulnerabilityowasptop10a9_2017"></a>`A9_2017` **{warning-solid}** | **Deprecated** in GitLab 17.4. 2017 values are no longer supported. Use 2021 values. |
-| <a id="vulnerabilityowasptop10a9_2021"></a>`A9_2021` | A9:2021-Security Logging and Monitoring Failures, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a01_2021"></a>`A01_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A01:2021-Broken Access Control, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a02_2021"></a>`A02_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A02:2021-Cryptographic Failures, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a03_2021"></a>`A03_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A03:2021-Injection, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a04_2021"></a>`A04_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A04:2021-Insecure Design, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a05_2021"></a>`A05_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A05:2021-Security Misconfiguration, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a06_2021"></a>`A06_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A06:2021-Vulnerable and Outdated Components, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a07_2021"></a>`A07_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A07:2021-Identification and Authentication Failures, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a08_2021"></a>`A08_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A08:2021-Software and Data Integrity Failures, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a09_2021"></a>`A09_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A09:2021-Security Logging and Monitoring Failures, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a10_2017"></a>`A10_2017` | A10:2017-Insufficient Logging & Monitoring, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a10_2021"></a>`A10_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A10:2021-Server-Side Request Forgery, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a1_2017"></a>`A1_2017` | A1:2017-Injection, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a1_2021"></a>`A1_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A1:2021-Broken Access Control, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a2_2017"></a>`A2_2017` | A2:2017-Broken Authentication, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a2_2021"></a>`A2_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A2:2021-Cryptographic Failures, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a3_2017"></a>`A3_2017` | A3:2017-Sensitive Data Exposure, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a3_2021"></a>`A3_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A3:2021-Injection, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a4_2017"></a>`A4_2017` | A4:2017-XML External Entities (XXE), OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a4_2021"></a>`A4_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A4:2021-Insecure Design, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a5_2017"></a>`A5_2017` | A5:2017-Broken Access Control, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a5_2021"></a>`A5_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A5:2021-Security Misconfiguration, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a6_2017"></a>`A6_2017` | A6:2017-Security Misconfiguration, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a6_2021"></a>`A6_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A6:2021-Vulnerable and Outdated Components, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a7_2017"></a>`A7_2017` | A7:2017-Cross-Site Scripting (XSS), OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a7_2021"></a>`A7_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A7:2021-Identification and Authentication Failures, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a8_2017"></a>`A8_2017` | A8:2017-Insecure Deserialization, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a8_2021"></a>`A8_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A8:2021-Software and Data Integrity Failures, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a9_2017"></a>`A9_2017` | A9:2017-Using Components with Known Vulnerabilities, OWASP top 10 category. |
+| <a id="vulnerabilityowasptop10a9_2021"></a>`A9_2021` **{warning-solid}** | **Introduced** in GitLab 16.8. **Status**: Experiment. A9:2021-Security Logging and Monitoring Failures, OWASP top 10 category. |
 | <a id="vulnerabilityowasptop10none"></a>`NONE` | No OWASP top 10 category. |
 
 ### `VulnerabilityReportType`
@@ -40218,6 +40529,18 @@ The older format `"gid://gitlab/PrometheusService/1"` was deprecated in 14.1.
 A `IssuableID` is a global ID. It is encoded as a string.
 
 An example `IssuableID` is: `"gid://gitlab/Issuable/1"`.
+
+### `IssuablesCustomFieldID`
+
+A `IssuablesCustomFieldID` is a global ID. It is encoded as a string.
+
+An example `IssuablesCustomFieldID` is: `"gid://gitlab/Issuables::CustomField/1"`.
+
+### `IssuablesCustomFieldSelectOptionID`
+
+A `IssuablesCustomFieldSelectOptionID` is a global ID. It is encoded as a string.
+
+An example `IssuablesCustomFieldSelectOptionID` is: `"gid://gitlab/Issuables::CustomFieldSelectOption/1"`.
 
 ### `IssueID`
 
@@ -41096,6 +41419,25 @@ Implementations:
 | <a id="googlecloudloggingconfigurationinterfacelogidname"></a>`logIdName` | [`String!`](#string) | Log ID. |
 | <a id="googlecloudloggingconfigurationinterfacename"></a>`name` | [`String!`](#string) | Name of the external destination to send audit events to. |
 
+#### `LabelInterface`
+
+Implementations:
+
+- [`AbuseReportLabel`](#abusereportlabel)
+- [`Label`](#label)
+
+##### Fields
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="labelinterfacecolor"></a>`color` | [`String!`](#string) | Background color of the label. |
+| <a id="labelinterfacecreatedat"></a>`createdAt` | [`Time!`](#time) | When the label was created. |
+| <a id="labelinterfacedescription"></a>`description` | [`String`](#string) | Description of the label (Markdown rendered as HTML for caching). |
+| <a id="labelinterfaceid"></a>`id` | [`ID!`](#id) | Label ID. |
+| <a id="labelinterfacetextcolor"></a>`textColor` | [`String!`](#string) | Text color of the label. |
+| <a id="labelinterfacetitle"></a>`title` | [`String!`](#string) | Content of the label. |
+| <a id="labelinterfaceupdatedat"></a>`updatedAt` | [`Time!`](#time) | When the label was last updated. |
+
 #### `MemberInterface`
 
 Implementations:
@@ -41114,6 +41456,7 @@ Implementations:
 | <a id="memberinterfacecreatedby"></a>`createdBy` | [`UserCore`](#usercore) | User that authorized membership. |
 | <a id="memberinterfaceexpiresat"></a>`expiresAt` | [`Time`](#time) | Date and time the membership expires. |
 | <a id="memberinterfaceid"></a>`id` | [`ID!`](#id) | ID of the member. |
+| <a id="memberinterfacelastactivityon"></a>`lastActivityOn` | [`Time`](#time) | Date of last activity in the namespace (group or project). |
 | <a id="memberinterfaceupdatedat"></a>`updatedAt` | [`Time`](#time) | Date and time the membership was last updated. |
 | <a id="memberinterfaceuser"></a>`user` | [`UserCore`](#usercore) | User that is associated with the member object. |
 
@@ -41228,6 +41571,7 @@ Implementations:
 | <a id="pendingmemberinterfaceexpiresat"></a>`expiresAt` | [`Time`](#time) | Date and time the membership expires. |
 | <a id="pendingmemberinterfaceid"></a>`id` | [`ID!`](#id) | ID of the member. |
 | <a id="pendingmemberinterfaceinvited"></a>`invited` | [`Boolean`](#boolean) | Whether the pending member has been invited. |
+| <a id="pendingmemberinterfacelastactivityon"></a>`lastActivityOn` | [`Time`](#time) | Date of last activity in the namespace (group or project). |
 | <a id="pendingmemberinterfacename"></a>`name` | [`String`](#string) | Name of the pending member. |
 | <a id="pendingmemberinterfaceupdatedat"></a>`updatedAt` | [`Time`](#time) | Date and time the membership was last updated. |
 | <a id="pendingmemberinterfaceuser"></a>`user` | [`UserCore`](#usercore) | User that is associated with the member object. |
@@ -41331,6 +41675,7 @@ Implementations:
 - [`EpicIssue`](#epicissue)
 - [`Group`](#group)
 - [`Issue`](#issue)
+- [`Key`](#key)
 - [`MergeRequest`](#mergerequest)
 - [`Namespace`](#namespace)
 - [`Project`](#project)
@@ -41943,7 +42288,7 @@ Field that are available while modifying the custom mapping attributes for an HT
 | <a id="boardissueinputassigneewildcardid"></a>`assigneeWildcardId` | [`AssigneeWildcardId`](#assigneewildcardid) | Filter by assignee wildcard. Incompatible with assigneeUsername and assigneeUsernames. |
 | <a id="boardissueinputauthorusername"></a>`authorUsername` | [`String`](#string) | Filter by author username. |
 | <a id="boardissueinputconfidential"></a>`confidential` | [`Boolean`](#boolean) | Filter by confidentiality. |
-| <a id="boardissueinputepicid"></a>`epicId` | [`EpicID`](#epicid) | Filter by epic ID. Incompatible with epicWildcardId. |
+| <a id="boardissueinputepicid"></a>`epicId` **{warning-solid}** | [`EpicID`](#epicid) | **Deprecated:** This will be replaced by WorkItem hierarchyWidget. Deprecated in GitLab 17.5. |
 | <a id="boardissueinputepicwildcardid"></a>`epicWildcardId` | [`EpicWildcardId`](#epicwildcardid) | Filter by epic ID wildcard. Incompatible with epicId. |
 | <a id="boardissueinputhealthstatusfilter"></a>`healthStatusFilter` | [`HealthStatusFilter`](#healthstatusfilter) | Health status of the issue, "none" and "any" values are supported. |
 | <a id="boardissueinputiids"></a>`iids` | [`[String!]`](#string) | List of IIDs of issues. For example `["1", "2"]`. |
@@ -42254,7 +42599,7 @@ A year and month input for querying product analytics usage data.
 | ---- | ---- | ----------- |
 | <a id="negatedboardissueinputassigneeusername"></a>`assigneeUsername` | [`[String]`](#string) | Filter by assignee username. |
 | <a id="negatedboardissueinputauthorusername"></a>`authorUsername` | [`String`](#string) | Filter by author username. |
-| <a id="negatedboardissueinputepicid"></a>`epicId` | [`EpicID`](#epicid) | Filter by epic ID. Incompatible with epicWildcardId. |
+| <a id="negatedboardissueinputepicid"></a>`epicId` **{warning-solid}** | [`EpicID`](#epicid) | **Deprecated:** This will be replaced by WorkItem hierarchyWidget. Deprecated in GitLab 17.5. |
 | <a id="negatedboardissueinputhealthstatusfilter"></a>`healthStatusFilter` | [`HealthStatus`](#healthstatus) | Health status not applied to the issue. Includes issues where health status is not set. |
 | <a id="negatedboardissueinputiids"></a>`iids` | [`[String!]`](#string) | List of IIDs of issues. For example `["1", "2"]`. |
 | <a id="negatedboardissueinputiterationid"></a>`iterationId` | [`[IterationID!]`](#iterationid) | Filter by a list of iteration IDs. Incompatible with iterationWildcardId. |

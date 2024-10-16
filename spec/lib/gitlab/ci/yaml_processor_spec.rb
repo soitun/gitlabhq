@@ -680,7 +680,7 @@ module Gitlab
               EOYML
             end
 
-            it_behaves_like 'has warnings and expected error', /rspec job: chosen stage does not exist/
+            it_behaves_like 'has warnings and expected error', /rspec job: chosen stage custom_stage does not exist/
           end
 
           context 'job dependency does not exist' do
@@ -3349,13 +3349,13 @@ module Gitlab
         context 'returns errors if job stage is not a pre-defined stage' do
           let(:config) { YAML.dump({ rspec: { script: "test", stage: "acceptance" } }) }
 
-          it_behaves_like 'returns errors', 'rspec job: chosen stage does not exist; available stages are .pre, build, test, deploy, .post'
+          it_behaves_like 'returns errors', 'rspec job: chosen stage acceptance does not exist; available stages are .pre, build, test, deploy, .post'
         end
 
         context 'returns errors if job stage is not a defined stage' do
           let(:config) { YAML.dump({ stages: %w[build test], rspec: { script: "test", stage: "acceptance" } }) }
 
-          it_behaves_like 'returns errors', 'rspec job: chosen stage does not exist; available stages are .pre, build, test, .post'
+          it_behaves_like 'returns errors', 'rspec job: chosen stage acceptance does not exist; available stages are .pre, build, test, .post'
         end
 
         context 'returns errors if stages is not an array' do
@@ -3819,19 +3819,6 @@ module Gitlab
         end
 
         context 'on pages option' do
-          context 'when not in a pages job' do
-            let(:config) do
-              <<-EOYML
-              not-pages:
-                script: echo
-                pages:
-                  path_prefix: 'foo'
-              EOYML
-            end
-
-            it_behaves_like 'returns errors', 'jobs:not-pages pages can only be used within a `pages` job'
-          end
-
           context 'when in a pages job' do
             let(:config) do
               <<-EOYML

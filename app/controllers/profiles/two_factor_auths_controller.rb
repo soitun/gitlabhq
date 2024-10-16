@@ -3,7 +3,7 @@
 class Profiles::TwoFactorAuthsController < Profiles::ApplicationController
   skip_before_action :check_two_factor_requirement
   before_action :ensure_verified_primary_email, only: [:show, :create]
-  before_action :validate_current_password, only: [:create, :codes, :destroy, :destroy_otp, :create_webauthn], if: :current_password_required?
+  before_action :validate_current_password, only: [:create, :codes, :destroy, :destroy_otp, :destroy_webauthn, :create_webauthn], if: :current_password_required?
   before_action :update_current_user_otp!, only: [:show]
 
   helper_method :current_password_required?
@@ -94,8 +94,6 @@ class Profiles::TwoFactorAuthsController < Profiles::ApplicationController
   end
 
   def destroy_otp
-    return if Feature.disabled?(:delete_otp_no_webauthn)
-
     result = TwoFactor::DestroyOtpService.new(current_user, user: current_user).execute
 
     if result[:status] == :success
@@ -103,6 +101,12 @@ class Profiles::TwoFactorAuthsController < Profiles::ApplicationController
     else
       redirect_to profile_two_factor_auth_path, status: :found, alert: result[:message]
     end
+  end
+
+  def destroy_webauthn
+    Webauthn::DestroyService.new(current_user, current_user, params[:id]).execute
+
+    redirect_to profile_two_factor_auth_path, status: :found, notice: _("Successfully deleted WebAuthn device.")
   end
 
   def skip
@@ -135,8 +139,8 @@ class Profiles::TwoFactorAuthsController < Profiles::ApplicationController
     error_message = { message: _('You must provide a valid current password.') }
     if params[:action] == 'create_webauthn'
       @webauthn_error = error_message
-    elsif params[:action] == 'destroy_otp' || Feature.enabled?(:two_factor_actions)
-      @destroy_error = error_message
+    elsif params[:action] == 'create'
+      @otp_error = error_message
     else
       @error = error_message
     end
@@ -187,7 +191,7 @@ class Profiles::TwoFactorAuthsController < Profiles::ApplicationController
       {
         name: webauthn_registration.name,
         created_at: webauthn_registration.created_at,
-        delete_path: profile_webauthn_registration_path(webauthn_registration)
+        delete_path: destroy_webauthn_profile_two_factor_auth_path(webauthn_registration)
       }
     end
   end

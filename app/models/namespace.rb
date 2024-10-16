@@ -158,6 +158,12 @@ class Namespace < ApplicationRecord
   validate :changing_allow_descendants_override_disabled_shared_runners_is_allowed, unless: -> { project_namespace? }
   validate :parent_organization_match, if: :require_organization?
 
+  attribute :organization_id, :integer, default: -> do
+    return 1 if Feature.enabled?(:namespace_model_default_org)
+
+    columns_hash['organization_id'].default
+  end
+
   delegate :name, to: :owner, allow_nil: true, prefix: true
   delegate :avatar_url, to: :owner, allow_nil: true
   delegate :prevent_sharing_groups_outside_hierarchy, :prevent_sharing_groups_outside_hierarchy=,
@@ -799,7 +805,7 @@ class Namespace < ApplicationRecord
   end
 
   def refresh_access_of_projects_invited_groups
-    if Feature.enabled?(:specialized_worker_for_group_lock_update_auth_recalculation)
+    if Feature.enabled?(:specialized_worker_for_group_lock_update_auth_recalculation, self)
       Project
         .where(namespace_id: id)
         .joins(:project_group_links)

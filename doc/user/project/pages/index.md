@@ -125,7 +125,7 @@ If you are running a self-managed instance of GitLab,
 
 ### Configure GitLab Pages in a Helm Chart (Kubernetes) instance
 
-To configure GitLab Pages on instances deployed via Helm chart (Kubernetes), use either:
+To configure GitLab Pages on instances deployed with Helm chart (Kubernetes), use either:
 
 - [The `gitlab-pages` subchart](https://docs.gitlab.com/charts/charts/gitlab/gitlab-pages/).
 - [An external GitLab Pages instance](https://docs.gitlab.com/charts/advanced/external-gitlab-pages/).
@@ -411,3 +411,47 @@ To restore a stopped deployment that has not been deleted yet, see
 
 Parallel Pages deployments, created by a merge request with a `path_prefix`, are automatically deleted when the
 merge request is closed or merged.
+
+## User defined job names
+
+> - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/232505) in GitLab 17.5 with a flag `customizable_pages_job_name`, disabled by default.
+
+Historically, the pages deploy job needed to be named `pages` in order to
+trigger a pages deployment. With the `pages` setting, this is no longer
+necessary.
+
+To trigger a pages deployment from any job, include the `pages` property in the
+job definition. It can either be a hash or simply a boolean set to `true`
+
+```yaml
+deploy-my-pages-site:
+  stage: deploy
+  script:
+    - npm run build
+  pages: true
+  artifacts:
+    paths:
+    - public
+```
+
+This also works:
+
+```yaml
+deploy-pages-review-app:
+  stage: deploy
+  script:
+    - npm run build
+  pages:
+    path_prefix: '/_staging'
+  artifacts:
+    paths:
+    - public
+```
+
+If the `pages` property of a job named `pages` is set to `false`, no
+deployment will be triggered.
+
+```yaml
+pages:
+  pages: false
+```

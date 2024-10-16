@@ -214,9 +214,9 @@ requirements:
 
 **Two-factor authentication** - [GitLab supports the following second factors](../user/profile/account/two_factor_authentication.md):
 
-- Time-based one-time passwords
+- One-time password authenticators
 
-- WebAuthN devices
+- WebAuthn devices
 
 [Instructions for enabling two-factor authentication](../user/profile/account/two_factor_authentication.md#enable-two-factor-authentication)
 are provided in the documentation. Customers pursuing FedRAMP must consider
@@ -224,7 +224,7 @@ two-factor providers that are FedRAMP authorized and support FIPS
 requirements. FedRAMP authorized providers can be found on the [FedRAMP Marketplace](https://marketplace.fedramp.gov/products).
 When selecting a second factor, it is important to note that NIST and
 FedRAMP are now indicating that phishing resistant authentication, such
-as WebAuthN, must be used (IA-2).
+as WebAuthn, must be used (IA-2).
 
 **SSH keys**
 
@@ -615,7 +615,7 @@ GitLab documents its [Release and Maintenance Policy](../policy/maintenance.md)
 in the documentation. Prior to upgrading a GitLab instance, please review the
 available guidance, which can assist with [planning an upgrade](../update/plan_your_upgrade.md),
 [upgrading without downtime](../update/zero_downtime.md),
-and other [upgrade paths](../update/index.md#upgrade-paths).
+and other [upgrade paths](../update/upgrade_paths.md).
 
 [Security dashboards](../user/application_security/security_dashboard/index.md)
 can be configured to track vulnerability data over time, which you can use to identify

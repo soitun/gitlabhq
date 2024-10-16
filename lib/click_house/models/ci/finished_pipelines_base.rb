@@ -28,6 +28,14 @@ module ClickHouse # rubocop:disable Gitlab/BoundedContexts -- Existing module
           where(path: project.project_namespace.traversal_path)
         end
 
+        def for_source(source)
+          where(source: source)
+        end
+
+        def for_ref(ref)
+          where(ref: ref)
+        end
+
         def within_dates(from_time, to_time)
           query = self
           started_at_bucket = @query_builder.table[:started_at_bucket]
@@ -50,6 +58,12 @@ module ClickHouse # rubocop:disable Gitlab/BoundedContexts -- Existing module
 
         def count_pipelines_function
           Arel::Nodes::NamedFunction.new('countMerge', [@query_builder.table[:count_pipelines]])
+        end
+
+        def duration_quantile_function(quantile)
+          Arel::Nodes::NamedFunction
+            .new("quantileMerge(#{quantile / 100.0})", [@query_builder.table[:duration_quantile]])
+            .as("p#{quantile}")
         end
 
         private

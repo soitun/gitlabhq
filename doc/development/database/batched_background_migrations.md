@@ -142,47 +142,6 @@ The optimization underlying mechanic is based on the concept of time efficiency.
 the exponential moving average of time efficiencies for the last N jobs and updates the batch
 size of the batched background migration to its optimal value.
 
-#### For GitLab SAAS
-
-When updating a large dataset specify different batch sizes for GitLab SAAS.
-
-```ruby
-# frozen_string_literal: true
-
-class BatchedMigration < Gitlab::Database::Migration[2.2]
-  BATCH_SIZE = 1000
-  SUB_BATCH_SIZE = 100
-  GITLAB_OPTIMIZED_BATCH_SIZE = 75_000
-  GITLAB_OPTIMIZED_SUB_BATCH_SIZE = 250
-
-  def up
-    queue_batched_background_migration(
-      MIGRATION,
-      TABLE_NAME,
-      COLUMN_NAME,
-      job_interval: DELAY_INTERVAL,
-      **batch_sizes
-    )
-  end
-
-  private
-
-  def batch_sizes
-    if Gitlab.com_except_jh?
-      {
-        batch_size: GITLAB_OPTIMIZED_BATCH_SIZE,
-        sub_batch_size: GITLAB_OPTIMIZED_SUB_BATCH_SIZE
-      }
-    else
-      {
-        batch_size: BATCH_SIZE,
-        sub_batch_size: SUB_BATCH_SIZE
-      }
-    end
-  end
-end
-```
-
 ### Job retry mechanism
 
 The batched background migrations retry mechanism ensures that a job is executed again in case of failure.
@@ -333,10 +292,26 @@ the migration that was used to enqueue it. Pay careful attention to:
 When finalizing a batched background migration you also need to update the
 `finalized_by` in the corresponding `db/docs/batched_background_migrations`
 file. The value should be the timestamp/version of the migration you added to
-finalize it.
+finalize it. The [schema version of the RSpec tests](../testing_guide/testing_migrations_guide.md#testing-a-non-activerecordmigration-class)
+associated with the migration should also be set to this version to avoid having the tests fail due
+to future schema changes.
 
 See the below [Examples](#examples) for specific details on what the actual
 migration code should be.
+
+### Deleting batched background migration code
+
+Once a batched background migration has been finalized, the migration code in `lib/gitlab/background_migration/`
+and its associated tests can be deleted after the next required stop following the finalization.
+
+Here is an example scenario:
+
+- 17.2 and 17.5 are required stops.
+- In 17.0 the batched background migration is queued.
+- In 17.3 the migration may be finalized, provided that it's completed in GitLab.com.
+- In 17.6 the code related to the migration may be deleted.
+
+Batched background migration code is routinely deleted when migrations are squashed.
 
 ### Use job arguments
 

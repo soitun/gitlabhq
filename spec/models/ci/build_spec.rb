@@ -47,6 +47,7 @@ RSpec.describe Ci::Build, feature_category: :continuous_integration, factory_def
   it { is_expected.to have_many(:report_results).with_foreign_key(:build_id) }
   it { is_expected.to have_many(:pages_deployments).with_foreign_key(:ci_build_id) }
   it { is_expected.to have_many(:tag_links).with_foreign_key(:build_id).class_name('Ci::BuildTag').inverse_of(:build) }
+  it { is_expected.to have_many(:simple_tags).class_name('Ci::Tag').through(:tag_links).source(:tag) }
 
   it { is_expected.to have_one(:runner_manager).through(:runner_manager_build) }
   it { is_expected.to have_one(:runner_session).with_foreign_key(:build_id) }
@@ -4331,22 +4332,54 @@ RSpec.describe Ci::Build, feature_category: :continuous_integration, factory_def
   end
 
   describe '#pages_generator?', feature_category: :pages do
-    where(:name, :enabled, :result) do
-      'foo' | false | false
-      'pages' | false | false
-      'pages:preview' | true | false
-      'pages' | true | true
-    end
-
-    with_them do
-      before do
-        stub_pages_setting(enabled: enabled)
-        build.update!(name: name)
+    context 'with customizable_pages_job_name feature flag enabled' do
+      where(:name, :pages_config, :enabled, :result) do
+        'foo' | nil | false | false
+        'pages' | nil | false | false
+        'pages:preview' | nil | true | false
+        'pages' | nil | true | true
+        'foo' | true | true | true
+        'foo' | { expire_in: '1 day' } | true | true
+        'foo' | false | true | false
+        'pages' | false | true | false
       end
 
-      subject { build.pages_generator? }
+      with_them do
+        before do
+          stub_pages_setting(enabled: enabled)
+          build.update!(name: name, options: { pages: pages_config })
+          stub_feature_flags(customizable_pages_job_name: true)
+        end
 
-      it { is_expected.to eq(result) }
+        subject { build.pages_generator? }
+
+        it { is_expected.to eq(result) }
+      end
+    end
+
+    context 'with customizable_pages_job_name feature flag disabled' do
+      where(:name, :pages_config, :enabled, :result) do
+        'foo' | nil | false | false
+        'pages' | nil | false | false
+        'pages:preview' | nil | true | false
+        'pages' | nil | true | true
+        'foo' | true | true | false
+        'foo' | { expire_in: '1 day' } | true | false
+        'foo' | false | true | false
+        'pages' | false | true | true
+      end
+
+      with_them do
+        before do
+          stub_feature_flags(customizable_pages_job_name: false)
+          stub_pages_setting(enabled: enabled)
+          build.update!(name: name, options: { pages: pages_config })
+        end
+
+        subject { build.pages_generator? }
+
+        it { is_expected.to eq(result) }
+      end
     end
   end
 
@@ -5535,6 +5568,14 @@ RSpec.describe Ci::Build, feature_category: :continuous_integration, factory_def
 
         it { expect(matchers).to all be_protected }
       end
+
+      context 'with use_new_queue_tags disabled' do
+        before do
+          stub_feature_flags(use_new_queue_tags: false)
+        end
+
+        it { expect(matchers.map(&:tag_list)).to match_array([[], %w[tag1 tag2]]) }
+      end
     end
   end
 
@@ -6079,6 +6120,24 @@ RSpec.describe Ci::Build, feature_category: :continuous_integration, factory_def
       create(:ci_build_source, build: build, source: 'scan_execution_policy')
 
       expect(build.source).to eq('scan_execution_policy')
+    end
+  end
+
+  describe '#tags_ids_relation' do
+    let(:tag_list) { %w[ruby postgres docker] }
+
+    before do
+      build.update!(tag_list: tag_list)
+    end
+
+    it { expect(build.tags_ids_relation.pluck(:name)).to match_array(tag_list) }
+
+    context 'with use_new_queue_tags disabled' do
+      before do
+        stub_feature_flags(use_new_queue_tags: false)
+      end
+
+      it { expect(build.tags_ids_relation.pluck(:name)).to match_array(tag_list) }
     end
   end
 end

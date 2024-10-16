@@ -16,9 +16,11 @@ at a time, for example, from 14.6 to 14.7, then to 14.8, etc.
 
 If you want to upgrade to more than one minor release at a time (for example, from 14.6 to 14.9),
 you must take your GitLab instance offline, which implies downtime.
-Before starting this process, verify the
-[version specific upgrading instructions](index.md#version-specific-upgrading-instructions)
-relevant to your [upgrade path](index.md#upgrade-paths).
+Before starting this process, verify the version-specific upgrading instructions relevant to your [upgrade path](upgrade_paths.md):
+
+- [GitLab 17 changes](versions/gitlab_17_changes.md)
+- [GitLab 16 changes](versions/gitlab_16_changes.md)
+- [GitLab 15 changes](versions/gitlab_15_changes.md)
 
 For a single node installation, you must only [upgrade the GitLab package](package/index.md).
 
@@ -109,7 +111,7 @@ through the AMI process, or upgrade the package itself:
   and a redeployment using AMIs issues the nodes with new hostnames. Even though
   the storage is the same, Gitaly Cluster does not work when the hostnames change.
 
-The Praefect nodes, however, can be upgraded via an AMI redeployment process:
+The Praefect nodes, however, can be upgraded by using an AMI redeployment process:
 
   1. The AMI redeployment process must include `gitlab-ctl reconfigure`.
      Set `praefect['auto_migrate'] = false` on the AMI so all nodes get this. This

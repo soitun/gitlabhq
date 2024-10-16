@@ -6,6 +6,7 @@ class Key < ApplicationRecord
   include ShaAttribute
   include Expirable
   include FromUnion
+  include Todoable
 
   sha256_attribute :fingerprint_sha256
 
@@ -99,7 +100,7 @@ class Key < ApplicationRecord
   def add_to_authorized_keys
     return unless Gitlab::CurrentSettings.authorized_keys_enabled?
 
-    AuthorizedKeysWorker.perform_async(:add_key, shell_id, key)
+    AuthorizedKeysWorker.perform_async('add_key', shell_id, key)
   end
 
   # rubocop: disable CodeReuse/ServiceClass
@@ -111,7 +112,7 @@ class Key < ApplicationRecord
   def remove_from_authorized_keys
     return unless Gitlab::CurrentSettings.authorized_keys_enabled?
 
-    AuthorizedKeysWorker.perform_async(:remove_key, shell_id)
+    AuthorizedKeysWorker.perform_async('remove_key', shell_id)
   end
 
   # rubocop: disable CodeReuse/ServiceClass
@@ -140,6 +141,14 @@ class Key < ApplicationRecord
 
   def signing?
     super || auth_and_signing?
+  end
+
+  def readable_by?(user)
+    user_id == user.id
+  end
+
+  def to_reference
+    fingerprint
   end
 
   private

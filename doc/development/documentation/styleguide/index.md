@@ -10,9 +10,6 @@ description: 'Writing styles, markup, formatting, and other standards for GitLab
 This document defines the standards for GitLab documentation, including grammar, formatting, and more.
 For guidelines on specific words, see [the word list](word_list.md).
 
-For style questions, mention `@tw-style` in an issue or merge request. If you have access to the GitLab Slack workspace,
-use the `#docs-processes` channel.
-
 ## The GitLab voice
 
 The GitLab brand guidelines define the
@@ -458,6 +455,18 @@ To make text bold, wrap it with double asterisks (`**`). For example:
 ```markdown
 1. Select **Cancel**.
 ```
+
+When using bold format for UI elements or keywords, place any punctuation outside the bold tag.
+This rule includes periods, commas, colons, and right-angle brackets (`>`).
+
+The punctuation is part of the sentence structure rather than the UI element or keyword that you're emphasizing.
+
+Include punctuation in the bold tag when it's part of the UI element or keyword itself.
+
+For example:
+
+- `**Option**: This an option description.`
+- `Select **Overview** > **Users**.`
 
 ### Inline code
 

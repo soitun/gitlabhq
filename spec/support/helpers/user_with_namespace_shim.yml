@@ -101,6 +101,7 @@
 - ee/spec/features/remote_development/workspaces_dropdown_group_spec.rb
 - ee/spec/features/search/elastic/global_search_spec.rb
 - ee/spec/features/search/elastic/project_search_spec.rb
+- ee/spec/features/search/elastic/project_search_redactions_work_item_spec.rb
 - ee/spec/features/search/elastic/snippet_search_spec.rb
 - ee/spec/features/security/dashboard_access_spec.rb
 - ee/spec/features/security/profile_access_spec.rb
@@ -112,7 +113,6 @@
 - ee/spec/features/security/project/snippet/public_access_spec.rb
 - ee/spec/features/subscriptions/subscription_flow_for_existing_user_with_eligible_group_spec.rb
 - ee/spec/features/subscriptions_spec.rb
-- ee/spec/features/trials/show_trial_banner_spec.rb
 - ee/spec/features/user_sees_marketing_header_spec.rb
 - ee/spec/features/user_settings/password_spec.rb
 - ee/spec/features/users/login_spec.rb

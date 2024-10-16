@@ -1735,6 +1735,7 @@
     PROCESS_TEST_RESULTS: "true"
     KNAPSACK_GENERATE_REPORT: "true"
     QA_SAVE_TEST_METRICS: "true"
+    QA_RUN_IN_PARALLEL: "false" # disable single job parallelization due to incompatibility with knapsack and coverband
 
 .qa:rules:e2e-schedule-blocking:
   rules:
@@ -1833,33 +1834,37 @@
 
 .qa:rules:e2e:test-on-cng:
   rules:
-    # Until https://gitlab.com/gitlab-org/quality/quality-engineering/CNG-mirror is stable enough,
-    # test-on-cng should not be part of development flow.
-    # Once it's ready, delete the two following rules, and uncomment the commented lines below.
-    - !reference [".qa:rules:e2e-test-never-run", rules]
+    # TODO: Enable for stable branches once cng is fully enabled in mr pipelines
+    - <<: *if-merge-request-targeting-stable-branch
+      when: never
+    # TODO: Check security fork is able to build cng images before enabling
+    - <<: *if-security-merge-request
+      when: never
+    - <<: *if-security-schedule
+      when: never
+    - !reference [".qa:rules:e2e-blocking-base-before", rules]
+    - !reference [".prevent-tier-2-and-below", rules]
+    - !reference [".qa:rules:e2e-blocking-base-after", rules]
     - <<: *if-dot-com-gitlab-org-schedule
       variables:
-        KNAPSACK_GENERATE_REPORT: "true"
+        CREATE_TEST_FAILURE_ISSUES: "true"
         PROCESS_TEST_RESULTS: "true"
+        KNAPSACK_GENERATE_REPORT: "false"
         QA_SAVE_TEST_METRICS: "true"
-        QA_RUN_IN_PARALLEL: "false" # disable single job parallelization due to incompatibility with knapsack and coverband
-      allow_failure: true
-    # - <<: *if-merge-request-targeting-stable-branch
-    #   when: never
-    # - <<: *if-security-merge-request
-    #   when: never
-    # - <<: *if-security-schedule
-    #   when: never
-    # - !reference [".qa:rules:e2e-blocking-base-before", rules]
-    # - !reference [".prevent-tier-2-and-below", rules]
-    # - !reference [".qa:rules:e2e-blocking-base-after", rules]
-    # - !reference [".qa:rules:e2e-schedule-blocking", rules]
-    # - <<: *if-merge-request
-    #   changes: *cng-orchestrator-patterns
+        QA_RUN_IN_PARALLEL: "true"
+    - <<: *if-default-branch-schedule-nightly
+      variables:
+        CREATE_TEST_FAILURE_ISSUES: "true"
+        PROCESS_TEST_RESULTS: "true"
+        KNAPSACK_GENERATE_REPORT: "true"
+        QA_SAVE_TEST_METRICS: "true"
+        QA_RUN_IN_PARALLEL: "false" # disable single job parallelization due to incompatibility with knapsack
 
 .qa:rules:test-on-omnibus-nightly:
   rules:
     - !reference [".qa:rules:e2e-test-never-run", rules]
+    - <<: *if-security-schedule
+      when: never
     - <<: *if-default-branch-schedule-nightly
       allow_failure: true
       variables:

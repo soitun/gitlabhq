@@ -331,6 +331,13 @@ RSpec.describe Todo, feature_category: :team_planning do
         end
       end
     end
+
+    context 'when todo is for an expired SSH key' do
+      let_it_be(:key) { create(:key, user: current_user) }
+      let_it_be(:todo) { build(:todo, target: key, project: nil, group: nil, user: current_user) }
+
+      it { is_expected.to eq("http://localhost/-/user_settings/ssh_keys/#{key.id}") }
+    end
   end
 
   describe '#self_added?' do
@@ -540,6 +547,18 @@ RSpec.describe Todo, feature_category: :team_planning do
       todo1 = create(:todo, group: parent_group)
       todo2 = create(:todo, group: child_group)
       todos = described_class.for_group_ids_and_descendants([parent_group.id])
+
+      expect(todos).to contain_exactly(todo1, todo2)
+    end
+  end
+
+  describe '.pending_for_expiring_ssh_keys' do
+    it 'returns only todos matching the given key ids' do
+      todo1 = create(:todo, target_type: Key, target_id: 1, action: described_class::SSH_KEY_EXPIRING_SOON, state: :pending)
+      todo2 = create(:todo, target_type: Key, target_id: 2, action: described_class::SSH_KEY_EXPIRING_SOON, state: :pending)
+      create(:todo, target_type: Key, target_id: 3, action: described_class::SSH_KEY_EXPIRING_SOON, state: :done)
+      create(:todo, target_type: Issue, target_id: 1, action: described_class::ASSIGNED, state: :pending)
+      todos = described_class.pending_for_expiring_ssh_keys([1, 2, 3])
 
       expect(todos).to contain_exactly(todo1, todo2)
     end
